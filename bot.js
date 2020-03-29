@@ -881,4 +881,279 @@ message.channel.send("`Error`:" + Julian)
   }
   });
 
+client.on("message", msg=>{
+let id = "436918120184021012"; // ايديك
+let role = "VIP"; // اسم رتبة الفيب
+let Price = 10000; // السعر
+let Price2 = Math.floor(Price-(Price*(1/100)));
+if(!Price || Price < 1) return;
+let cmd = msg.content.split(' ')[0];
+if(cmd === `${prefix}buy`){
+if(msg.author.bot) return;
+if(!msg.channel.guild) return;
+let embedvip = new Discord.RichEmbed()
+.setColor("#42f4f4")
+.setAuthor(msg.author.username, msg.author.displayAvatarURL)
+.setThumbnail(msg.author.avatarURL)
+.setTitle("**Choose the method that's right for you**")
+.addField("To buy VIP for yourself","🔱",true )
+.addField("To buy your VIP as a gift","🎁",true)
+.setTimestamp()
+.setFooter(client.user.username,client.user.displayAvatarURL);
+msg.channel.send(embedvip).then(msgs2 =>{
+msgs2.react("🔱").then(()=>{
+  msgs2.react("🎁").then(()=>{
+    const me = (reaction, user) => reaction.emoji.name === '🔱' && user.id === msg.author.id;
+    const gift = (reaction, user) => reaction.emoji.name === '🎁' && user.id === msg.author.id;
+    const mec = msgs2.createReactionCollector(me, {time: 120000});
+    const giftc = msgs2.createReactionCollector(gift, {time: 120000});
+mec.on("collect", r=>{  
+msgs2.delete()
+if(msg.member.roles.find(r=>r.name == role)) return msg.reply("You already own the rank");
+let roleW = msg.guild.roles.find(r=>r.name == role);
+if(!roleW) return msg.reply(`The bot is locked because there is no rank by name \`${role}\``)
+msg.channel.send(`Credit ProBot \`${Price}\` You have 4 minutes to convert
+to ${msg.guild.members.get(id)}
+`).then( msgs =>{
+const filter = response => response.author.id == "282859044593598464" && response.mentions._content.includes(`:moneybag: | ${msg.author.username}, has transferred \`$${Price2}\` to ${msg.guild.members.get(id)}`);
+msg.channel.awaitMessages(filter, { maxMatches: 1, time: 240000, errors: ['time'] })
+.then( collected =>{
+msgs.delete()
+msg.reply(`You were given rank \`${role}\``);
+msg.member.addRole(roleW);
+}).catch(e => {});
+})})
+giftc.on("collect", r=>{
+  msgs2.delete()
+  let roleW = msg.guild.roles.find(r=>r.name == role);
+  if(!roleW) return msg.reply(`The bot is locked because there is no rank by name \`${role}\``)
+msg.channel.send(`Credit ProBot\`${Price}\` You have 4 minutes to convert
+to ${msg.guild.members.get(id)}
+`).then( msgs =>{
+  const filter = response => response.author.id == "282859044593598464" && response.mentions._content.includes(`:moneybag: | ${msg.author.username}, has transferred \`$${Price2}\` to ${msg.guild.members.get(id)}`);
+  msg.channel.awaitMessages(filter, { maxMatches: 1, time: 240000, errors: ['time'] })
+  .then( collected =>{
+  msgs.delete()
+  genKey(msg,roleW);
+  }).catch(e => {});
+  })
+})
+})})})
+///
+}
+if(cmd === `${prefix}used`){
+  let args = msg.content.split(" ").slice(1)[0];
+  if(!args) {   
+    let embed = new Discord.RichEmbed()
+    .setColor("#42f4f4")
+    .setTitle(`:x: - **Please enter your gift code** \`${prefix}used <Key>\``)
+    msg.reply(embed).then( z => z.delete(3000));
+    return
+}
+  let embed = new Discord.RichEmbed()
+.setTitle(`**Verifying code**`)
+.setColor("#42f4f4")
+  msg.reply(embed).then( msgs =>{
+  if(vipKeys[args]){
+    let hav = msg.member.roles.find(`name`, vipKeys[args].name);
+    if(hav){
+    let embed = new Discord.RichEmbed()
+    .setTitle(`:x: - **You already own this rank**  \`${vipKeys[args].name}\``)
+    .setColor("#42f4f4")
+    msgs.edit(embed)
+    return
+    }
+    let embed = new Discord.RichEmbed()
+    .setTitle(`:tada: - **Congratulations you were given rank** \`${vipKeys[args].name}\``)
+    .setColor("#42f4f4")
+    msgs.edit(embed)
+    msg.member.addRole(vipKeys[args]);
+    delete vipKeys[args]
+    save()
+  }else{
+    let embed = new Discord.RichEmbed()
+    .setTitle(`:x: - **The code is not valid or is already in use**`)
+    .setColor("#42f4f4")
+    msgs.edit(embed)
+  }});
+}
+});
+
+function genKey(msg,role){
+  var randomkeys = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var gift = "";
+  for (var y = 0; y < 16; y++) {   ///16
+    gift +=  `${randomkeys.charAt(Math.floor(Math.random() * randomkeys.length))}`;
+  }
+  vipKeys[gift] = role;
+  let embed = new Discord.RichEmbed()
+  .setColor("#42f4f4")
+  .setTitle(`:ok_hand: - **The code was sent to the private**`);
+  msg.reply(embed);
+  let embed2= new Discord.RichEmbed()
+  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
+  .setThumbnail(msg.author.avatarURL)
+  .addField("**Key Of Gift**", gift,true)
+  .addField("Role",vipKeys[gift].name,true)
+  .addField("This Key Made by", msg.author, true)
+  .addField("The Room", msg.channel , true)
+  .setTimestamp()
+  .setFooter(client.user.username,client.user.displayAvatarURL)  
+  msg.author.send(embed2);
+  save()
+}
+
+function save(){
+  fs.writeFile("./vipKeys.json", JSON.stringify(vipKeys), (err) => {
+    if (err) console.log(err)
+  });
+	
+}
+
+client.on('message', message => {
+    if (message.content.toLowerCase().startsWith(prefix+"tops")) {
+        const top = client.guilds.sort((a, b) => a.memberCount - b.memberCount).array().reverse()
+     let tl = "";
+      for (let i=0;i<=25;i++) {
+          if (!top[i]) continue;
+         tl += i+" - "+top[i].name+" : "+top[i].memberCount+"\n"
+      }
+      message.channel.send(tl)
+    }
+});
+
+client.on('message' , async (message) => {
+var prefix = "!"
+    if(message.content.startsWith(prefix + "topinv")) {
+if(message.author.bot) return;
+if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
+  var invites = await message.guild.fetchInvites();
+    invites = invites.array();
+    arraySort(invites, 'uses', { reverse: true });
+    let possibleInvites = ['User Invited |  Uses '];
+    invites.forEach(i => {
+        if (i.uses === 0) { 
+            return;
+        }
+      possibleInvites.push(['\n\ ' +'<@'+ i.inviter.id +'>' + '  :  ' +   i.uses]);
+     //معلومه بسيطه يمديك تكرر العمليهه أكثر من مره
+    })
+    const embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+    .addField("Top Invites." ,`${(possibleInvites)}`)
+
+    message.channel.send(embed)
+    }
+});
+
+client.on('guildMemberAdd', member => {
+
+    const channel = member.guild.channels.find('name', 'welcome');
+  
+    const millis = new Date().getTime() - member.user.createdAt.getTime();
+    const now = new Date();
+    const createdAt = millis / 1000 / 60 / 60 / 24;
+
+
+
+
+  
+    const embed = new Discord.RichEmbed()
+    
+    .setColor("RANDOM")
+    .setDescription(`**How much time do you have in the discord: ${createdAt.toFixed(0)} Day**`)
+    .setAuthor(member.user.tag, member.user.avatarURL);
+    channel.sendEmbed(embed);
+
+  
+});
+
+ client.on('message', message => {
+
+ var ms = require('ms')
+
+ var moment = require('moment');
+  
+ if (message.author.bot) return;
+
+ if (!message.content.startsWith(prefix)) return;
+
+ let command = message.content.split(" ")[0];
+
+ command = command.slice(prefix.length);
+
+ let args = message.content.split(" ").slice(1);
+
+ let messageArray = message.content.split(" ");
+
+ let embed = new Discord.RichEmbed()
+
+.setImage("https://5.top4top.net/p_13409tj171.png")
+
+ if (command == "ban") {
+
+ if(!message.channel.guild) return message.reply('** This command only for servers**');
+         
+ if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**:x: You Don't Have ` BAN_MEMBERS ` Permission**");
+
+ if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**:x: I Don't Have ` BAN_MEMBERS ` Permission**");
+
+ let user = message.mentions.users.first();
+
+ let Reason = message.content.split(" ").slice(3).join(" ");
+
+ let time = messageArray[2];
+
+ if (message.mentions.users.size < 1) return message.channel.sendEmbed(embed)
+  
+ if (!message.guild.member(user).bannable) return message.reply("**:x:I Don't Have Permission For Ban This User**");
+
+ if(!time.match(/[1-60][s,m,h,d,w]/g))  return message.channel.send(':x: This Time Is Incorrect')
+
+ if(!Reason)  {
+
+ message.guild.member(user).ban({reason: Reason})
+
+ }
+
+  if(!Reason && time) {
+
+  message.guild.member(user).ban(7, user);
+
+  }  
+
+  if(!time) {
+
+  message.guild.member(user).ban(7, user);
+
+  }
+  if(time) {
+  
+  setTimeout(() => {
+
+  message.guild.unban(user);
+
+  }, ms(time));
+
+  }
+
+  if(time && Reason && user) {
+
+  message.guild.member(user).ban({reason: Reason})
+	  
+	  
+  setTimeout(() => {
+
+  message.guild.unban(user);
+  
+  }, ms(time));
+
+  }
+
+  message.channel.send(`:white_check_mark:  ${user.tag} banned from the server ! :airplane:`)
+
+  }
+
+  });
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
