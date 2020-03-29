@@ -1398,4 +1398,245 @@ message.channel.send(`Your message has been successfully delivered to the bot de
 }
 });
 
+client.on('message', message => {
+    if (message.content.startsWith("!hack")) {
+        if(!message.author.id === '') return;
+      if (message.author.bot) return
+           message.delete();
+             let args = message.content.split(' ').slice(1);
+ 
+                   let virusname = args.join(' ');
+                 if (virusname < 1) {
+                     return message.channel.send("**```Type the name of the person who wants to hack.```**");
+                 }
+                 message.channel.send({embed: new Discord.RichEmbed().setTitle('Loading ' + virusname + "...").setColor(0xFF0000)}).then(function(m) {
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
+             }, 1000)
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓ ] 2%').setColor(0xFF0000)})
+             }, 2000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓ ] 3%').setColor(0xFF0000)})
+             }, 3000)
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓ ] 4%').setColor(0xFF0000)})
+             }, 4000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓ ] 28%').setColor(0xFF0000)})
+             }, 5000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 35%').setColor(0xFF0000)})
+             }, 6000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 78%').setColor(0xFF0000)})
+             }, 7000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 80%').setColor(0xFF0000)})
+             }, 8000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 86%').setColor(0xFF0000)})
+             }, 9000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 89%').setColor(0xFF0000)})
+             }, 10000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 90%').setColor(0xFF0000)})
+             }, 11000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 95%').setColor(0xFF0000)})
+             }, 12000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 96%').setColor(0xFF0000)})
+             }, 13000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 97%').setColor(0xFF0000)})
+             }, 14000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 98%').setColor(0xFF0000)})
+             }, 15000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓���▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 99%').setColor(0xFF0000)})
+             }, 16000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%').setColor(0xFF0000)})
+             }, 17000)
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']:' + virusname + 'done it\'s going good 100.9%').setColor(0xFF0000)})
+             }, 18000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: hacking yeah i love it').setColor(0xFF0000)})
+             }, 19000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: uploading data' + virusname + ".key").setColor(0xFF0000)})
+             }, 22000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 5...').setColor(0xFF0000)})
+             }, 25000)
+               setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 4...').setColor(0xFF0000)})
+             }, 26000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 3...').setColor(0xFF0000)})
+             }, 27000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 2...').setColor(0xFF0000)})
+             }, 28000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
+             }, 29000)
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 99%').setColor(0xFF0000)})
+           }, 30000)
+              setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓]100% virus added').setColor(0xFF0000)})
+           }, 31000)
+              setTimeout(function() {
+               m.delete()
+           }, 32000)
+             setTimeout(function() {
+               message.channel.send('**The hacking process was successful ! **')
+           }, 33000)
+           });
+         }
+ });
+
+client.on('message' , message => {
+if(message.content === '!voice') {
+    message.channel.send(`**Number of people in the voice channels are : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
+}
+});
+
+client.on('message' , async message => {
+	  var prefix = "!";
+         if(message.content.startsWith(prefix + "emoji")) {
+            let args = message.content.split(" ").slice(1);
+    if (args.length < 1) {
+      message.channel.send('You must provide some text to emojify!');
+  }
+  
+  message.channel.send(
+      args.join(' ')
+          .split('')
+          .map(c => codes[c] || c)
+          .join('')
+  );
+  };
+  });
+
+client.on('message', message => {
+     if (message.content === "!user") {
+         if(!message.channel.guild) return message.reply('** This command only for servers**');
+     let embed = new Discord.RichEmbed()
+  .setThumbnail(message.author.avatarURL)  
+               .setFooter(`Anti Invite Links`, '')
+    .setColor("ffffff")
+    .addField(" :bust_in_silhouette: Full Username", `${message.author.username}#${message.author.discriminator}`)
+    .addField(" :id: User ID", message.author.id)
+    .addField(" :information_source: Stats", `${message.author.presence.status}`, true)
+    .addField(' :game_die: Game', `${message.author.presence.game === null ? "No Game" : message.author.presence.game.name}`, true)
+    .addField(':robot: Bot ?', message.author.client)
+    .addField(" :shield: Roles:", message.member.roles.filter(r => r.id !== message.guild.id).map(roles => roles.name))
+    .addField(" :globe_with_meridians: Registered \ Joined Discord", message.author.createdAt)
+    .addField(" :inbox_tray: Joined Server", message.member.joinedAt)
+
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+var flip = ["**__HEADS__**",
+"**__TAILS__**"
+]
+    client.on('message', message => {
+        
+    if(message.content.startsWith(prefix + 'flip')) {
+        if(!message.channel.guild) return message.reply('** This command only for servers **');
+         var cat = new Discord.RichEmbed()
+.setDescription(flip[Math.floor(Math.random() * flip.length)])
+.setThumbnail("https://cdn.onlinewebfonts.com/svg/img_441809.png")
+.setColor(0xd3d0c4)
+   .setFooter(`Bot by MrBloods`)
+message.channel.sendEmbed(cat);
+
+    }
+});
+
+client.on('message', message => {
+        
+   if(message.content.startsWith(prefix + 'rename')) {
+if(message.member.hasPermission("ADMINISTRATOR")) {
+         let args = message.content.split(' ').slice(2);
+var mentionned = message.mentions.users.first();
+   
+  if(!args){
+    return message.channel.send(":x: " + `**| Please enter a new Nick for ${mentionned}**`);
+  }
+  if (!mentionned)return message.channel.send("**You Have to Mention A member :x:**")
+  message.guild.member(mentionned).setNickname(args.join(" ")).then(user => message.channel.send(`:full_moon_with_face: ${mentionned}'s' **New NickName is **` + `__${args.join(" ")}__` + "!")).catch(console.error);
+} else {
+  return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission");
+  }
+
+
+    }
+});
+
+client.on('message', message => {
+    if (message.content === "!role") {
+        if(!message.channel.guild) return message.reply('** This command only for servers **');
+
+        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
+        message.channel.send(`**[${roles}]**`);
+    }
+});
+
+ client.on('message', function(message) {
+    if(message.content.startsWith(prefix + 'roll')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('**Put a number** :game_die:');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
+});
+
+client.on('message', message => {
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'move')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``To use the command, type this command: " +prefix+ "move [USER]``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("RANDOM")
+ .setDescription(`You have moved out <@${usermentioned}> Into your voice room✅ `)
+var embed = new Discord.RichEmbed()
+.setTitle(`You are Moved in ${message.guild.name}`)
+ .setColor("RANDOM")
+.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``You can't move"+ message.mentions.members.first() +" `This member must be in voice room`")
+}
+} else {
+ message.channel.send("**``You must be in an voice room in order to move out the member``**")
+}
+} else {
+message.react("❌")
+}
+ }
+});//toxic codes
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
