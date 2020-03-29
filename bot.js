@@ -146,4 +146,139 @@ client.on("message", msg => {
     }
   });
 
+client.on('message', async message => {
+    let messageArray = message.content.split(" ");
+   if(message.content.startsWith(prefix + "setLeave")) {
+             
+    let filter = m => m.author.id === message.author.id;
+    let thisMessage;
+    let thisFalse;
+ 
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
+       msg.delete(4500);
+       message.delete(4500);
+    });
+   
+    message.channel.send(':pencil: **| Please type your message now... :pencil2: **').then(msg => {
+ 
+        message.channel.awaitMessages(filter, {
+          max: 1,
+          time: 90000,
+          errors: ['time']
+        })
+        .then(collected => {
+            collected.first().delete();
+            thisMessage = collected.first().content;
+            let boi;
+            msg.edit(':scroll: **| Type the name of the room now... :pencil2: **').then(msg => {
+     
+                message.channel.awaitMessages(filter, {
+                  max: 1,
+                  time: 90000,
+                  errors: ['time']
+                })
+                .then(collected => {
+                    collected.first().delete();
+                    boi = collected.first().content;
+                    msg.edit('✅ **| Prepared successfully...  **').then(msg => {
+       
+                      message.channel.awaitMessages(filter, {
+                        max: 1,
+                        time: 90000,
+                        errors: ['time']
+                      })
+                      let embed = new Discord.RichEmbed()
+                      .setTitle('**Done The Leave Msg Code Has Been Setup**')
+                      .addField('Message:', `${thisMessage}`)
+                      .addField('Channel:', `${boi}`)
+                      .setThumbnail(message.author.avatarURL)
+                      .setFooter(`${client.user.username}`)
+                     message.channel.sendEmbed(embed)
+    welcome[message.guild.id] = {
+leavechannel: boi,
+leavemsg: thisMessage,
+onoff: 'On',
+leave: 'On'
+    }
+    fs.writeFile("./welcomer.json", JSON.stringify(welcome), (err) => {
+    if (err) console.error(err)
+  })
+   }
+            )
+        })
+    })
+})
+    })
+}})
+
+client.on('message', message => {//new msg event
+if(!message.channel.guild) return;
+  if(message.content.startsWith(prefix + 'rainbow')) {//to create the rainbow role
+      let role = message.guild.roles.find('name', 'VortexPrison.')
+    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
+  //start of create role
+  if(!role){
+    rainbow =  message.guild.createRole({
+   name: "MrBloods.",//the role will create name
+   color: "#000000",//the default color
+   permissions:[]//the permissions
+ //end of create role
+})
+ 
+}
+message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the step completed
+}})
+ 
+client.on('ready', () => {//new ready event
+  setInterval(function(){
+      client.guilds.forEach(g => {
+                  var role = g.roles.find('name', 'MrBloods.');//rainbow role name
+                  if (role) {
+                      role.edit({color : "RANDOM"});
+                  };
+      });
+  }, 15000);//the rainbow time
+})
+
+client.on("guildMemberAdd", member => {
+    member.createDM().then(function (channel) {
+    return channel.send(`:rose: Welcome to VortexPrison server ! :rose: 
+  :crown: Have fun!: ${member}:crown:  
+  You're number: ${member.guild.memberCount} `) 
+  }).catch(console.error)
+  })
+
+client.on('guildCreate', guild => {
+    var embed = new Discord.RichEmbed()
+    .setColor(0x5500ff)
+    .setDescription(`**Thank you for adding the bot to your server.**`)
+        guild.owner.send(embed)
+  });
+
+client.on('message', message => {
+         if(message.content === prefix + "closeroom") {
+                             if(!message.channel.guild) return message.reply('** This command only for servers**');
+  
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__You dont have permsission!__**');
+                message.channel.overwritePermissions(message.guild.id, {
+              SEND_MESSAGES: false
+  
+                }).then(() => {
+                    message.reply("**__Chat has been closed!__ ✅ **")
+                });
+                  }
+      if(message.content === prefix + "openroom") {
+                          if(!message.channel.guild) return message.reply('** This command only for servers**');
+  
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__You dont have permsission!__**');
+                message.channel.overwritePermissions(message.guild.id, {
+              SEND_MESSAGES: true
+  
+                }).then(() => {
+                    message.reply("**__Chat has been opened!__✅**")
+                });
+      }
+         
+});
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
