@@ -1157,7 +1157,7 @@ client.on('guildMemberAdd', member => {
   });
 
 client.on("message", message => {
-    if (message.content === "!cmds") {
+    if (message.content === "!help") {
      const embed = new Discord.RichEmbed() 
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
