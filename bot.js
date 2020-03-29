@@ -1156,4 +1156,246 @@ client.on('guildMemberAdd', member => {
 
   });
 
+client.on("message", message => {
+    if (message.content === "!cmds") {
+     const embed = new Discord.RichEmbed() 
+         .setColor("#00FF00")
+         .setThumbnail(message.author.avatarURL)
+         .setDescription(`**Help | DivineWoods**
+
+        **__General orders__**
+**
+『!allbots/ Show you all the bots in the server.』
+『!server/ Show you the server info』
+『!bot/ Show you the bot info』
+『!members/ Show you the online and offline members』
+『!id/ Show you your id』
+『!ping/ Show you the bot ping』
+『!info/ Show you some bot info』
+『!help/ Show you this list』
+『!link/ Give you link of the server』
+『!new/ Open a ticket』
+『!close/ Close a ticket』
+『!sug/ Suggestion for an idea』
+『!image/ Show server image』
+『!avatar/ Show you your avatar』
+『!rename/ Like nickname』
+『!user/ Show you your infos』
+**
+
+        **__Games orders__**
+ **       
+『!rps/ Rock-Paper-Scissors』
+『!roll/ Rolling』
+『!flip/ All know it xD』
+『!cat/ Give you some cute pictures』
+『!slots/ everyone know it』
+『!hack/ like hacking accs but its a game』
+『!emoji <emoji>/ its funny and helpful 』
+『!skin <ign>/ Show your minecraft skin 』
+**
+
+        **__Music orders__**
+**
+『${prefix}play / Soon』
+『${prefix}skip / Soon』
+『${prefix}pause / Soon』
+『${prefix}resume / Soon』
+『${prefix}vol / Soon』
+『${prefix}stop / Soon』
+『${prefix}np / Soon』
+『${prefix}queue / Soon』
+**
+
+        **__Administrative Orders__**
+**
+『!bc / broadcast』
+『!role / show you all the roles』
+『!clear / clear all the chat』
+『!kick @user / Kick member』
+『!ban @user / Ban member』
+『!unbanall / Unban  all the members』
+『!cc / make 50 colored roles』
+『!topic / Change or create a topic』
+『!say <word> / The bot will say your word』
+『!move/ You will move the member from foice channel』
+『!voice  / Show you the members who are in the voice rooms』
+
+『 The bot can mute anyone share any link in the chat - The bot will remove any bad words 』
+『 The bot welcome who join the server if you create a room called welcome 』
+『 The bot have a log !! 』
+『 Thanks for using the bot 』
+
+       Bot By MrBloods** `)
+     
+            
+   message.author.sendEmbed(embed)
+   
+   }
+   });
+
+client.on('message',async message => {
+  var room;
+  var title;
+  var duration;
+  var gMembers;
+  var filter = m => m.author.id === message.author.id;
+  if(message.content.startsWith(prefix + "giveaway")) {
+     //return message.channel.send(':heavy_multiplication_x:| **This is currently disabled .. ``Try later``**');
+    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
+    message.channel.send(`:eight_pointed_black_star:| **Please type the name of the room**`).then(msgg => {
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 20000,
+        errors: ['time']
+      }).then(collected => {
+        let room = message.guild.channels.find('name', collected.first().content);
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **I could not find the desired room**');
+        room = collected.first().content;
+        collected.first().delete();
+        msgg.edit(':eight_pointed_black_star:| **Type the duration of the GiveAway in minutes, for example : 60**').then(msg => {
+          message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 20000,
+            errors: ['time']
+          }).then(collected => {
+            if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **``You should rewrite it``**');
+            duration = collected.first().content * 60000;
+            collected.first().delete();
+            msgg.edit(':eight_pointed_black_star:| **Finally, write on what you want to GiveAway**').then(msg => {
+              message.channel.awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ['time']
+              }).then(collected => {
+                title = collected.first().content;
+                collected.first().delete();
+                try {
+                  let giveEmbed = new Discord.RichEmbed()
+                  .setAuthor(message.guild.name, message.guild.iconURL)
+                  .setTitle(title)
+                  .setDescription(`Duration : ${duration / 60000} Minutes`)
+                  .setFooter(message.author.username, message.author.avatarURL);
+                  message.guild.channels.find('name', room).send(giveEmbed).then(m => {
+                     let re = m.react('🎉');
+                     setTimeout(() => {
+                       let users = m.reactions.get("💖").users;
+                       let list = users.array().filter(u => u.id !== m.author.id);
+                       let gFilter = list[Math.floor(Math.random() * list.length) + 0];
+                         if(users.size === 1) gFilter = '**Not selected**';
+                       let endEmbed = new Discord.RichEmbed()
+                       .setAuthor(message.author.username, message.author.avatarURL)
+                       .setTitle(title)
+                       .addField('GiveAway finished !',`The winner is : ${gFilter}`)
+                       .setFooter(message.guild.name, message.guild.iconURL);
+                       m.edit(endEmbed);
+                     },duration);
+                   });
+                  msgg.edit(`:heavy_check_mark:| **The stand was prepared GiveAway**`);
+                } catch(e) {
+                  msgg.edit(`:heavy_multiplication_x:| **I was unable to prepare the GiveAway because of the lack of characteristics**`);
+                  console.log(e);
+                }
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+});
+	  
+client.on("message", msg =>{    
+if(msg.content.startsWith(`${prefix}topservers`)){
+      const devs = ['436918120184021012'];
+      if (!devs.includes(msg.author.id)) return msg.channel.send(`** | You Can't Use this Command.**`);
+     
+  let noTop = msg.content.split(" ")[1];
+  const top = client.guilds.sort((a,b)=>a.memberCount-b.memberCount).array().reverse()
+  if(!noTop) noTop = 10; //pixel Zine
+  if(isNaN(noTop)) noTop = 10;
+  if(noTop <= 0) noTop = 10;
+  if(noTop > top.length) noTop = top.length;
+  let serveremmbed = new Discord.RichEmbed();
+  for(let i = 0; i < noTop; i++){
+  serveremmbed.addField(`\n **⇏ ${top[i].name}** \n Members » ${top[i].memberCount}`," ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎");
+  }
+  serveremmbed.setTitle(`\n **Top ${noTop} Servers** \n`);
+  serveremmbed.setThumbnail(msg.author.displayAvatarURL);
+  serveremmbed.setTimestamp();
+  serveremmbed.setColor('#42A9C9')
+  serveremmbed.setFooter(client.user.username,client.user.displayAvatarURL);
+  msg.channel.send(serveremmbed);
+}});//zine pixel
+
+
+
+client.on('message', message => {
+  if (message.channel.id === "693849611080826911") {
+    message.react('☑')
+      .then(() => {
+        message.react('🚫')
+      });
+  }
+});
+
+
+client.on('message', async msg =>{
+	if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(prefix)) return undefined;
+
+    let args = msg.content.split(' ');
+
+	let command = msg.content.toLowerCase().split(" ")[0];
+	command = command.slice(prefix.length)
+
+    if(command === `avatar`){
+	if(msg.channel.type === 'dm') return msg.channel.send("Nope Nope!! u can't use avatar command in DMs (:")
+        let mentions = msg.mentions.members.first()
+        if(!mentions) {
+          let sicon = msg.author.avatarURL
+          let embed = new Discord.RichEmbed()
+          .setImage(msg.author.avatarURL)
+          .setColor("#5074b3")
+          msg.channel.send({embed})
+        } else {
+          let sicon = mentions.user.avatarURL
+          let embed = new Discord.RichEmbed()
+          .setColor("#5074b3")
+          .setImage(sicon)
+          msg.channel.send({embed})
+        }
+    };
+});
+
+let inv_room = "688718826971595008" // room id
+client.on('guildMemberAdd', async member => { // membed add event
+    member.guild.fetchInvites().then(async guildInvites => { // fetch invites ?
+            const inv = invites[member.guild.id]; // get invite :)
+            invites[member.guild.id] = guildInvites; // push guild invites on invites
+            let invite = guildInvites.find(i => inv.get(i.code).uses < i.uses); // find ?
+            let res = await SQLite.get(`SELECT * FROM linkSysteme WHERE code = '${invite.code}'`) // select from sql
+            if(!res) { // if the code does'nt exists
+            console.log(invite.code) // for test
+            client.channels.get(inv_room).send("**Welcome To "+member.guild.name+"🌹 .\n       Joined By: "+invite.inviter+".**") // send message to welcome room
+            } else { // if the code link exitst
+                client.channels.get(inv_room).send("**Welcome To "+member.guild.name+"🌹 .\n       Joined By: <@!"+res.id+">.**") // send message to welcome room
+                console.log(res.code) // for test
+        } // end if
+    }); // end fetchs :)
+}); // end events :) ) )) ))  )) )) )) )) ) )) ))
+
+client.on("message", message => {
+if(message.content.startsWith(prefix + `contact`)){
+if(message.author.bot || message.channel.type == 'dm') return;
+let args = message.content.split(" ").slice(1);
+let msg = args.join(' ');
+let dev = client.users.get("436918120184021012"); //Your id
+if(!args) return message.reply("You must type the message");
+dev.send(`• | User: **${message.author.tag}**\n\n• | Message: **${msg}**`).then(() =>{
+message.channel.send(`Your message has been successfully delivered to the bot developer`)
+}).catch(console.error);
+}
+});
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
