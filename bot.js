@@ -471,4 +471,118 @@ client.on('guildCreate', guild => {
         guild.owner.send(embed)
   });
 
+client.on('message', message => {
+    if(message.content == '!allservers') {
+             if(!message.author.id === '436918120184021012') return;
+    var gimg;//Toxic Codes
+    var gname;//Toxic Codes
+    var gmemb;//Toxic Codes
+    var gbots;//Toxic Codes
+    var groles;//Toxic Codes
+    var servers = client.guilds;
+    servers.forEach((g)=>{//Toxic Codes
+    gname = g.name;//Toxic Codes
+    gimg = g.iconURL;//Toxic Codes
+    gmemb = g.members.size;//Toxic Codes
+    gbots = g.members.filter(m=>m.bot).size;
+    groles = g.roles.map(r=> {return r.name});//Toxic Codes
+    let serv = new Discord.RichEmbed()//Toxic Codes
+    .setAuthor(gname,gimg)
+    .setThumbnail(gimg)
+    .addField('Server bots',gbots)
+    .addField('Server Member Count',gmemb = g.members.size)
+    .setColor('RANDOM')
+    message.channel.send(`
+    Server Name : **${gname}**
+    Server MemberCount : **${gmemb} **
+            
+            `);//Toxic Codes
+          message.channel.sendEmbed(serv);
+    }) //Toxic Codes
+    }//Toxic Codes
+    }); //Toxic Codes
+
+client.on('message', message => { // Toxic Codes
+    if (!message.content.startsWith(prefix)) return; // Toxic Codes
+  if(!message.channel.guild) return message.reply('** This command only for servers **') // Toxic Codes
+    let command = message.content.split(" ")[0]; // Toxic Codes
+    command = command.slice(prefix.length); // Toxic Codes
+    if (command === "kill"){ // Toxic Codes
+
+   var sabotage = message.mentions.users.first();
+   if(sabotage == message.author)return message.reply(`**Suicide is not good!**`);// Toxic Codes
+    if(sabotage === client.user) return message.reply(`**You want to kill me?**`);
+  if (sabotage < 1) {
+    message.delete();
+    return message.channel.sendMessage('Put something to kill, like mention user, or use an emoji.');// Toxic Codes
+  }
+  if (!sabotage) return message.channel.send(`Please Mention A Member to Kill ⚠`)// Toxic Codes
+  message.channel.send("▄︻̷̿┻̿═━一 ${sabotage")// Toxic Codes
+  .then(msg =>{
+  msg.edit(`▄︻̷̿┻̿═━一 ${sabotage} 3⃣`);// Toxic Codes
+  setTimeout(function() {
+    msg.edit(`▄︻̷̿┻̿═━一 ${sabotage} 2⃣`);// Toxic Codes
+  }, 1000);
+  setTimeout(function() {
+    msg.edit(`▄︻̷̿┻̿═━一 ${sabotage} 1⃣`);// Toxic Codes
+  }, 2000);// Toxic Codes
+  setTimeout(function() {
+    msg.edit(`▄︻̷̿┻̿═━一 💥`);// Toxic Codes
+  }, 3000);// Toxic Codes
+  setTimeout(function() {
+    msg.edit(`▄︻̷̿┻̿═━一 🔥`);// Toxic Codes
+  }, 4000);
+  setTimeout(function() {
+    msg.edit(`▄︻̷̿┻̿═━一 💀`);// Toxic Codes
+  }, 5000);
+  msg.delete(6000)
+  message.delete()// Toxic Codes
+  })
+  message.channel.send("**The crime was successfully concealed 🕳 !**").then(msg => msg.delete(10000));// Toxic Codes
+    }
+});// Toxic Codes
+
+client.on('message', message => {
+    var prefix = "!"
+     let command = message.content.split(" ")[0];
+   command = command.slice(prefix.length);
+ 
+   let args = message.content.split(" ").slice(1);
+ 
+ 
+ if(command == "paint") {
+     var Canvas = require('canvas')
+   , Image = new Canvas.Image
+   , canvas = new Canvas(450, 170)
+   , ctx = canvas.getContext('2d');
+   ctx.font = '30px Impact';
+   let args = message.content.split(" ").slice(1);
+   
+ Image.src = canvas.toBuffer();
+ 
+     console.log(Image);
+ ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
+ ctx.fillText(args.join("  "),110, 70);
+ 
+ 
+ ctx.beginPath();
+ ctx.lineTo(50, 102);
+ ctx.stroke();
+ 
+ message.channel.sendFile(canvas.toBuffer());
+ }
+ 
+ });
+
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix + 'vip')) {
+        let guild = message.mentions.members.first();
+                          let ZmA = new Discord.RichEmbed()
+                  .setColor('3fcf24')
+                  .setDescription('**__✅ I added the rank__**')
+        message.member.addRole(message.guild.roles.find('name', 'VIP'));
+                    message.channel.send({embed:ZmA});
+    }
+}); //Toxic Codes
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
