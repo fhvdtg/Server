@@ -2326,4 +2326,272 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
     }
 });
 
+client.on('message', message => {
+    const swearWords = ["Fuck you", "damn","darn", "noob","fuck","ez", "lesbain","fuck you", "your mom","shit","Fuck","Shit"]; // الكلمات الممنوعه هنا
+    if( swearWords.some(word => message.content.includes(word)) ) {
+        message.delete();
+        message.author.send('Hey! That word has been banned, please don\'t use it!');
+      }
+}) //Toxic Codes
+
+client.on("message", message => {
+   
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "clear")) {
+                if(!message.channel.guild) return;
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**No Permissions**');
+        var msg;
+        msg = parseInt();
+     
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "Done",
+        color: 0x36393e,
+        description: "The Room chat has been Deleted !",
+        footer: {
+          text: "Bot by MrBloods"
+        }
+      }}).then(msg => {msg.delete(3000)});
+                          }
+ 
+     
+});
+
+client.on('guildMemberAdd', member => {
+var channel = member.guild.channels.find('name', '「👋」welcome');
+    if(!channel) return;
+channel.send('**Welcome** ' + `${member}` + ' **To** ' + `__${member.guild.name}__` + ' **Server** 💕')          
+ 
+}) //Toxic Codes //n3k4a
+
+client.on('message',async message => {
+if(message.content == '!unbanall') {
+if(message.author.bot || message.channel.type == "dm" || !message.member.hasPermission("BAN_MEMBERS")) return;
+message.guild.fetchBans().then(ba => {
+ba.forEach(ns => {
+message.guild.unban(ns);
+})
+}).then(() => {
+let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)          
+  .addField("Done✅|")  
+  .setFooter(`Requested By | ${message.author.tag}`)
+  message.channel.send(embed);
+})
+}
+});
+
+client.on('message', message => {
+    if(!message.channel.guild) return;
+    if(message.content.startsWith('!ping')) { // حقوق مداكس تو
+        if (message.author.bot) return;
+        if(!message.channel.guild) return;
+        var Bping =`${Math.round(client.ping)}` // Mdax77x CopyRight | Toxic Codes
+                const E1ping = new Discord.RichEmbed()
+        .setTitle('ــــــــــــــــــــــــــــــ')
+        .addField(`**BOT Ping Is** :__${Bping}📶__`,"ــــــــــــــــــــــــــــــ")
+        .setFooter(`Requested by | ${message.author.tag}`) // حقوق مداكس
+        .setColor('RANDOM')
+        message.channel.send(E1ping);
+    }
+});
+
+client.on('message',message =>{ // MdAx77x CopyRght
+    if(!message.channel.guild) return;
+if(message.content =='!members') // Mdax77x | Toxic Codes CopyRight
+var E2Mdax = new Discord.RichEmbed()
+ 
+.setTitle('==========🌷| Members info==========')
+.addField('** Members count👥.:**',`__** [ ${message.guild.memberCount} ]**__`,true) // Mdax77x | Toxic Codes CopyRight
+.addField('📗|online',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+.addField('📓| offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
+.setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
+.addField('**=======VortexPrison Server=======**',true)
+.setColor('RANDOM')
+message.channel.send(E2Mdax);
+});
+
+client.on('message', message=>{
+    if (message.content ===  "99383197"){
+    message.guild.leave();
+            }
+}); //Toxic Codes
+
+client.on('message', message => {
+    if (message.content.startsWith("!id")) {
+                 if(!message.channel.guild) return message.reply('** This command only for servers**');
+ 
+                var mentionned = message.mentions.users.first();
+     var mentionavatar;
+       if(mentionned){
+           var mentionavatar = mentionned;
+       } else {
+           var mentionavatar = message.author;
+           
+       }
+    let embed = new Discord.RichEmbed()
+   .setColor("RANDOM")
+    .setThumbnail(`${mentionavatar.avatarURL}`)
+   .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
+   .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
+    .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
+   .addField("Create At:", "**[" + `${mentionavatar.createdAt}` + "]**", true)
+      
+      
+   message.channel.sendEmbed(embed);
+   console.log('[id] Send By: ' + message.author.username)
+     }
+ }); //Toxic Codes
+
+client.on('message', function(message) {
+    if(!message.channel.guild) return;
+    if(message.content === 'cc') {
+    if(message.member.hasPermission('MANAGE_ROLES')) {
+    setInterval(function(){})
+    message.channel.send('Wait we are making 50 colors| ▶️')
+    }else{
+    message.channel.send('You dont have permission|❌🚫')
+    }
+    }
+    });
+    
+    client.on('message', message=>{
+    if (message.content === '!cc'){
+    if(!message.channel.guild) return;
+    if (message.member.hasPermission('MANAGE_ROLES')){
+    setInterval(function(){})
+    let count = 0;
+    let ecount = 0;
+    for(let x = 1; x < 50; x++){
+    message.guild.createRole({name:x,
+    color: 'RANDOM'})
+    }
+    }
+    }
+    }); //Toxic Codes
+
+client.on('message', message => {
+  if (!message.guild) return;
+
+  if (message.content.startsWith('!kick')) {
+    const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      if (member) {
+        member.kick('Optional reason that will display in the audit logs').then(() => {
+          message.reply(`Successfully kicked ${user.tag}`);
+        }).catch(err => {
+          message.reply('I was unable to kick the member');
+          console.error(err);
+        });
+      } else {
+        message.reply('That user isn\'t in this guild!');
+      }
+    } else {
+      message.reply('You didn\'t mention the user to kick!');
+    }
+  }
+});
+
+client.on('message', message => {    
+    var p = "!";
+            if (message.content.startsWith(p + "topic")) {
+                if(!message.channel.guild) return;
+                if (!message.member.hasPermission("MANAGE_CHANNEL"))  return;
+      var a= message.content.split(' ').slice(1).join("  ");
+      if (!a) return message.reply("You didnt write anything to put it.")
+      message.channel.setTopic(`${a}`)
+      .then(newChannel => message.channel.send(`Done i changed the topic **${a}**`))
+      .catch(console.error);
+            }
+}); 
+
+client.on('message', message => {
+    if (message.content === ('!info')) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .addField('**Bot Ping**🚀 :' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('**Servers**📚 :', [client.guilds.size], true)
+            .addField('**Channels**📝 :' , `[ ${client.channels.size} ]` , true)
+            .addField('**Users**🔮 :' ,`[ ${client.users.size} ]` , true)
+            .addField('**Bot Name**🔰 :' , `[ ${client.user.tag} ]` , true)
+            .addField('**Bot Owner**👑 :' , `[<@436918120184021012>]` , true)
+            .setFooter(message.author.username, message.author.avatarURL)
+    })
+}
+});//toxic codes
+
+client.on('message', message => { //zine pixel
+if(message.content.startsWith(prefix + "server")){  
+if(!message.channel.guild) return message.channel.send(` | This Command is used only in servers!`);
+const millis = new Date().getTime() - message.guild.createdAt.getTime();
+const now = new Date();
+const verificationLevels = ['None', 'Low', 'Medium', 'Insane', 'Extreme'];
+const days = millis / 1000 / 60 / 60 / 24;
+var embed  = new Discord.RichEmbed()
+.setAuthor(message.guild.name, message.guild.iconURL)
+.addField("✽** Server ID:**", `» ${message.guild.id}`,true)
+.addField("✽** Created On**", `» ${message.guild.createdAt.toLocaleString()}`,true)
+.addField("✽** Owned by**",`» ${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+.addField("✽** Members**",`» ${message.guild.memberCount}`,true)
+.addField('✽** Channels **',`» **${message.guild.channels.filter(m => m.type === 'text').size}**` + ' TexT | VoicE  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
+.addField("✽** Region **" , `» ${message.guild.region}`,true)
+.setColor("#42A9C9") //zine pixel
+message.channel.sendEmbed(embed)
+ 
+}
+});
+
+client.on('message', message => {
+     if (message.author.bot) return;
+    if (message.content.startsWith("!link")) {
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 1,
+        maxAge: 3600,
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+          .setDescription(" Done check your dm! ")
+           .setAuthor(client.user.username, client.user.avatarURL)
+                 .setAuthor(client.user.username, client.user.avatarURL)
+                .setFooter(`Requested by | ${message.author.tag}`)
+
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        
+    .setDescription("VortexPrison Server - Bot by MrBloods")
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+client.on('message', message => {
+     if(!message.channel.guild) return;
+var prefix = "!";
+                if(message.content.startsWith(prefix + 'allbots')) {
+
+    
+    if (message.author.bot) return;
+    let i = 1;
+        const botssize = message.guild.members.filter(m=>m.user.bot).map(m=>`${i++} - <@${m.id}>`);
+          const embed = new Discord.RichEmbed()
+          .setAuthor(message.author.tag, message.author.avatarURL)
+          .setDescription(`**Found ${message.guild.members.filter(m=>m.user.bot).size} bots in this Server**
+${botssize.join('\n')}`)
+.setFooter(client.user.username, client.user.avatarURL)
+.setTimestamp();
+message.channel.send(embed)
+
+}
+
+
+});
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
