@@ -1819,64 +1819,6 @@ client.on('roleDelete', role => {
         logChannel.send(roleDelete);
     })
 });
-client.on('roleUpdate', (oldRole, newRole) => {
- 
-    if(!oldRole.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
-    if(!oldRole.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
- 
-    var logChannel = oldRole.guild.channels.find(c => c.name === '「📋」changelog');
-    if(!logChannel) return;
- 
-    oldRole.guild.fetchAuditLogs().then(logs => {
-        var userID = logs.entries.first().executor.id;
-        var userAvatar = logs.entries.first().executor.avatarURL;
- 
-        if(oldRole.name !== newRole.name) {
-            let roleUpdateName = new Discord.RichEmbed()
-            .setTitle('**[ROLE NAME UPDATE]**')
-            .setThumbnail(userAvatar)
-            .setColor('BLUE')
-            .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` Role Name.\n\n**Old Name:** \`\`${oldRole.name}\`\`\n**New Name:** \`\`${newRole.name}\`\`\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
-            .setTimestamp()
-            .setFooter(oldRole.guild.name, oldRole.guild.iconURL)
- 
-            logChannel.send(roleUpdateName);
-        }
-        if(oldRole.hexColor !== newRole.hexColor) {
-            if(oldRole.hexColor === '#000000') {
-                var oldColor = '`Default`';
-            }else {
-                var oldColor = oldRole.hexColor;
-            }
-            if(newRole.hexColor === '#000000') {
-                var newColor = '`Default`';
-            }else {
-                var newColor = newRole.hexColor;
-            }
-            let roleUpdateColor = new Discord.RichEmbed()
-            .setTitle('**[ROLE COLOR UPDATE]**')
-            .setThumbnail(userAvatar)
-            .setColor('BLUE')
-            .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` **${oldRole.name}** Role Color.\n\n**Old Color:** ${oldColor}\n**New Color:** ${newColor}\n**Role ID:** ${oldRole.id}\n**By:** <@${userID}> (ID: ${userID})`)
-            .setTimestamp()
-            .setFooter(oldRole.guild.name, oldRole.guild.iconURL)
- 
-            logChannel.send(roleUpdateColor);
-        }
-        if(oldRole.permissions !== newRole.permissions) {
-            let roleUpdate = new Discord.RichEmbed()
-            .setTitle('**[UPDATE ROLE PERMISSIONS]**')
-            .setThumbnail(userAvatar)
-            .setColor('BLUE')
-            .setDescription(`**\n**:first_place: Successfully \`\`CHANGED\`\` **${oldRole.name}** Permissions!\n\n**Old Permissions:** \`\`${oldRole.permissions}\`\`\n**New Permissions:** \`\`${newRole.permissions}\`\`\n**By:** <@${userID}> (ID: ${userID})`)
-            .setTimestamp()
-            .setFooter(oldRole.guild.name, oldRole.guild.iconURL)
-           
-            logChannel.send(roleUpdate)
-        }
-    })
-});
- 
  
 // Channels Log
 client.on('channelCreate', channel => {
