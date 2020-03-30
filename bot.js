@@ -1048,7 +1048,7 @@ if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
 
 client.on('guildMemberAdd', member => {
 
-    const channel = member.guild.channels.find('name', 'welcome');
+    const channel = member.guild.channels.find('name', '「👋」welcome');
   
     const millis = new Date().getTime() - member.user.createdAt.getTime();
     const now = new Date();
