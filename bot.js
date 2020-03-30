@@ -80,7 +80,7 @@ console.log("====================================")
 });
 
  client.on("guildMemberAdd", member => {
-  let welcomer = member.guild.channels.find("name","「👋」welcome");
+  let welcomer = member.guild.channels.find("name","welcome");
         if(!welcomer) return;
         if(welcomer) {
            moment.locale('ar-ly');
