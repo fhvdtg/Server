@@ -2824,4 +2824,28 @@ client.on('message', message => {
 }
 });
 
+client.on ("guildMemberAdd", async (steve) => {
+   var channel = steve.guild.channels.find(r => r.name === "welcome");
+        if (!channel) return false;
+        var canvas = Canvas.createCanvas(400, 200);
+        var ctx = canvas.getContext("2d");
+    
+        const background = await Canvas.loadImage("http://i8.ae/sw4p9");
+        const userAva = await Canvas.loadImage(steve.user.displayAvatarURL);
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+      
+      ctx.font = "20px sans-serif";
+      ctx.fillStyle = "#000000";
+      ctx.fillText(`${steve.user.username}`, 200 , 120)
+      ctx.font = "20px sans-serif";
+      ctx.fillStyle = "#000000";
+      ctx.fillText(`Welcome To Server`, 170 , 80)
+  ctx.beginPath();
+    ctx.arc(100, 100, 70, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.clip()
+        ctx.drawImage(userAva, 25, 25, 180, 150);
+        channel.send(new Discord.Attachment(canvas.toBuffer(), "welcome-steve.png"))
+})
+
 client.login(process.env.BOT_TOKEN);//MrBloods bot
