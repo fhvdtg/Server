@@ -35,6 +35,8 @@ const welcome = JSON.parse(fs.readFileSync("./welcomer.json", "utf8"));
 
 let xp = require('./xp.json'); //سوي ملف بأسم xp.json
 
+const replymsg = JSON.parse(fs.readFileSync("./replymsg.json", "utf8"));
+
 const reportjson = JSON.parse(fs.readFileSync("./report.json", "utf8"));
 
 const rWlc = JSON.parse(fs.readFileSync("./AutoRole.json", "utf8"));
@@ -105,6 +107,65 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
                    if (!suggests) return message.reply("Create a room called **「📊」suggestions** !")
                suggests.send();
 }
+})
+
+client.on('message', async message => {
+    if(message.author.bot || message.channel.type == "dm") return undefined;//Code By IxRawan_ g
+   
+    if(!replymsg[message.author.id + message.guild.id]) replymsg[message.author.id + message.guild.id] = {//Code By IxRawan_ a
+        replymsg: "off",//Code By IxRawan_ d
+        message: "off",//Code By IxRawan_ z
+    }
+//Code By IxRawan_ ssad
+    fs.writeFile("./replymsg.json", JSON.stringify(replymsg, null, 4), function (err) {//Code By IxRawan_ ff
+        if(err) throw err;
+    })
+    if(message.content.startsWith(prefix+"reply")){//Code By IxRawan_ wda
+        let reply;
+        let msg;
+        let filter = m => m.author.id === message.author.id;//Code By IxRawan_ wdawda
+ 
+        message.channel.send("Now write the messgage.").then(m => {//Code By IxRawan_ wada
+            message.channel.awaitMessages(filter, {//Code By IxRawan_ wda
+                maxMatches: 1,//Code By IxRawan_ aasd
+                time: 12000,//Code By IxRawan_ sdw
+                errors: ['time']//Code By IxRawan_ saddw
+            })
+            .then(collected => {//Code By IxRawan_ ooda
+                msg = collected.first().content;//Code By IxRawan_ wadwa
+                collected.first().delete()//Code By IxRawan_ dwasd
+                m.edit("Now write the replay.")//Code By IxRawan_ sdw
+           
+ 
+            message.channel.awaitMessages(filter , {
+                maxMatches: 1,
+                time: 12000,
+                errors: ['time']
+            })
+ 
+            .then(collected => {
+                reply = collected.first().content;
+                collected.first().delete()
+                var doneembed = new Discord.RichEmbed()
+                .setColor('GREEN')
+                .setTitle('Done!')
+                .setThumbnail(message.author.avatarURL)
+                .setDescription(`Message: \n${msg}\n\n Replay:\n ${reply}`)
+ 
+                replymsg[message.author.id + message.guild.id] = {
+                    replymsg: reply,
+                    message: msg,
+                }
+                fs.writeFile("./replymsg.json", JSON.stringify(replymsg, null, 4), function (err) {
+                    if(err) throw err;
+                })
+ 
+                m.edit(doneembed)
+            })
+        })
+        })
+    }
+ 
 })
 
  client.on("guildMemberAdd", member => {
@@ -529,6 +590,8 @@ client.on('message', message => {
     }) //Toxic Codes
     }//Toxic Codes
     }); //Toxic Codes
+
+
 
 client.on('message', message => { // Toxic Codes
     if (!message.content.startsWith(prefix)) return; // Toxic Codes
