@@ -97,7 +97,7 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
                    if (!suggests) return message.reply("Create a room called **「📊」suggestions** please")
                suggests.send(suggestsEMBED);
 }
-});
+})
 
 client.on('message', message => {
 if(message.content.startsWith('-seggest'))  {  
