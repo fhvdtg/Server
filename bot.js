@@ -79,32 +79,6 @@ console.log("1")
 console.log("====================================")
 });
 
-client.on('message', message => {let prefix = "!";
-if(message.content.startsWith(prefix + "suggest")) {
-      message.delete()
-
-const args = message.content.slice(prefix.length).trim().split(/ +/g);
-
-  var suggestMessage = args.slice(1).join(" ")
-  if(!suggestMessage) return message.reply("**Please write your suggestion!**")
-  let suggestsEMBED = new Discord.RichEmbed()
-   .setColor('RANDOM')
-   .setTitle("")
-   .setDescription(`**${suggestMessage}**`)
-   .setFooter(` **A suggestion from :** ${message.author.tag}`)
-  
-       let suggests = message.guild.channels.find(ch => ch.name === "「📊」suggestions");
-                   if (!suggests) return message.reply("Create a room called **「📊」suggestions** please")
-               suggests.send(suggestsEMBED);
-}
-})
-
-client.on('message', message => {
-if(message.content.startsWith('-seggest'))  {  
-    message.channel.send("To suggest write **!suggest**");
-    }
-  });
-
  client.on("guildMemberAdd", member => {
   let welcomer = member.guild.channels.find("name","welcomenesttimenewwelcomer");
         if(!welcomer) return;
