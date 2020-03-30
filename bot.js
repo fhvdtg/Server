@@ -99,6 +99,12 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 }
 });
 
+client.on('message', message => {
+if(message.content.startsWith('-seggest'))  {  
+    message.channel.send("To suggest write **!suggest**");
+    }
+  });
+
  client.on("guildMemberAdd", member => {
   let welcomer = member.guild.channels.find("name","welcomenesttimenewwelcomer");
         if(!welcomer) return;
