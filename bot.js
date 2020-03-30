@@ -92,12 +92,12 @@ if(message.content.startsWith(prefix + "suggest")) {
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
   var suggestMessage = args.slice(1).join(" ")
-  if(!suggestMessage) return message.reply("**Write your suggestion please**")
+  if(!suggestMessage) return message.reply("")
   let suggestsEMBED = new Discord.RichEmbed()
    .setColor('RANDOM')
-   .setTitle("**New suggestion!**")
-   .setDescription(`**${suggestMessage}**`)
-   .setFooter(`**Suggestion From:** ${message.author.tag}`)
+   .setTitle("")
+   .setDescription(``)
+   .setFooter(``)
   
        let suggests = message.guild.channels.find(ch => ch.name === "「📊」suggestions");
                    if (!suggests) return message.reply("Create a room called **「📊」suggestions** !")
