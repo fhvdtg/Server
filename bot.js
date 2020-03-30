@@ -85,6 +85,8 @@ if(message.content.startsWith('-suggest'))  {
     }
   });
 
+
+
 client.on('message', message => {let prefix = "!";
 if(message.content.startsWith(prefix + "suggest")) {
       message.delete()
