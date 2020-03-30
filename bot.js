@@ -1061,7 +1061,7 @@ client.on('guildMemberAdd', member => {
     const embed = new Discord.RichEmbed()
     
     .setColor("RANDOM")
-    .setDescription(`**Welcome**`), (member.user.tag), (`to VortexPrison Server 🌹 .**`)
+    .setDescription(`**Welcome to VortexPrison Server 🌹.**`)
     .setAuthor(member.user.tag, member.user.avatarURL);
     channel.sendEmbed(embed);
 
