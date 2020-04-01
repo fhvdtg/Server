@@ -296,7 +296,38 @@ Channel: ${thisMessage}\`\`\`
     }
 });
 
+client.on('message', message => {//mrx - dev
+    var prefix = '!';
+    if (message.content.startsWith(prefix + 'accept')) {
+        if (message.author.bot) return;
+        if (!message.guild) return;
+        let Room = message.guild.channels.find(`name`, 'accept-denied');//هنا ضع إسم الروم
+        let user = message.mentions.users.first();
+        let embedreject = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setAuthor(user.username,user.avatarURL)
+        .setTitle('» `You are accepted` :white_check_mark:  You will get a youtube or a twitch rank! just dm the staff!')
+        .setThumbnail(message.author.avatarURL)
+        Room.sendEmbed(embedreject);
+    }
+});
 
+client.on('message', message => {
+    var prefix = '!';//هنا البريفيكس
+    if (message.content.startsWith(prefix + 'reject')) {//هنا الأمر
+        if (message.author.bot) return;
+        if (!message.guild) return;
+        let Room = message.guild.channels.find(`name`, 'accept-denied');
+        let user = message.mentions.users.first();
+        let embedreject = new Discord.RichEmbed()/
+        .setColor('RANDOM')//
+        .setAuthor(user.username,user.avatarURL)
+        .setTitle('» `Sorry you are not accepted` :x: You need 200+ subs and 70-100+ views per video!')//هنا تقدر تغير الكلام حق الرسالة 
+        .setThumbnail(message.author.avatarURL)
+        Room.sendEmbed(embedreject);
+    }
+});
+ 
 
 client.on('message', message => {let prefix = "!";
 if(message.content.startsWith(prefix + "suggest")) {
