@@ -138,7 +138,7 @@ client.on('message', message => {
       let thisFalse;
     let jscodes = message.guild.channels.find(`name`, "applications");
     if(!jscodes) return message.channel.send("❌ Error channel");
-    message.channel.send('📝 **Give me link for your youtube channel and your discord name for exemple: https://youtube.com/ - MrBloods#0000     !**').then(msg => {
+    message.channel.send('📝 **Give me link for your youtube channel for exemple: https://youtube.com/name**').then(msg => {
  
      message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
       .then(collected => {
@@ -190,8 +190,8 @@ jscodes.send(`
 @everyone | @here
 **Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
 \`\`\`js
-${thisMessage}\`\`\`
-**Channel link and discord name**: ${message.author}
+**Channel:** ${thisMessage}\`\`\`
+**Application by**: ${message.author}
 **Subscribers**: ${boi}
 **Views:**: ${boi2}
 `)
@@ -215,7 +215,7 @@ sharejj.on('collect', r => {
       let thisFalse;
     var eriscodes = message.guild.channels.find(`name`, "applications");
     if(!eriscodes) return message.channel.send("❌ Error channel");
-    message.channel.send('📝 ** Give me link for your twitch channel and your discord name for exemple: https://twitch.com/ - MrBloods#0000     ! **').then(msg => {
+    message.channel.send('📝 ** Give me link for your twitch channel for exemple: https://twitch.com/name**').then(msg => {
  
      message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
       .then(collected => {
@@ -268,8 +268,8 @@ if(eriscodes) {
 eriscodes.send(`@everyone | @here
 **Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
 \`\`\`js
-${thisMessage}\`\`\`
-**channel and discord name**: ${message.author}
+**Channel:** ${thisMessage}\`\`\`
+**Application by**: ${message.author}
 **subscribers**: ${boi}
 **اViews**: ${boi2}
 `)
