@@ -86,6 +86,215 @@ if(message.content.startsWith('-suggest'))  {
     message.channel.send("To suggest you need to write **!suggest**");
     }
   });
+ 
+client.on('message', message => {
+    var prefix = "!";
+    if(message.content === (prefix + "apply")) {
+       
+        const httpkey = "http";
+       
+        let rank = message.guild.member(message.author).roles.find('name', '〘 Verified 〙');
+        if (!rank) return message.channel.send('');
+       
+        var romcodes = message.channel.id == '688718834387255405';
+        if(!romcodes) {
+            message.channel.send('**:x: Please use the command here #「👾」bot-commands !**')
+        } else {
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('     **=-=-:: [ apply system ] ::-=-=** ' ,'╔[❖═════════════════════❖]╗')
+        .addField('**- A If you want to apply for youtube rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
+        .addField('** B If you want to apply for twitch rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
+        .addField('=-=- [js] -=-=' ,'╚[❖═════════════════════❖]╝')
+        .setFooter(`Alpha codes`)
+        .setTimestamp()
+        message.channel.sendEmbed(embed).then(msg => {
+   
+            msg.react('🇦').then( r => {
+                msg.react('🇧').then( r => {
+   //             msg.react('🇨').then( r => {
+     //           msg.react('🇩').then( r => {
+       
+ 
+            let sharejsFilter = (reaction, user) => reaction.emoji.name === '🇦' && user.id === message.author.id;
+            let sharepyFilter = (reaction, user) => reaction.emoji.name === '🇧' && user.id === message.author.id;
+           // let shareerisFilter = (reaction, user) => reaction.emoji.name === '🇨' && user.id === message.author.id;
+          //  let shareioFilter = (reaction, user) => reaction.emoji.name === '🇩' && user.id === message.author.id;
+       
+   
+   
+            let sharejs = msg.createReactionCollector(sharejsFilter, { time: 20000});
+            let sharejj = msg.createReactionCollector(sharepyFilter, { time: 20000});
+          //  let shareio = msg.createReactionCollector(shareioFilter, { time: 20000});
+//            let shareeris = msg.createReactionCollector(shareerisFilter, { time: 20000});
+           
+       
+   
+       
+        sharejs.on('collect', r => {
+            msg.delete()
+      let filter = m => m.author.id === message.author.id;
+      let thisMessage;
+      let thisFalse;
+    let jscodes = message.guild.channels.find(`name`, "applications");
+    if(!jscodes) return message.channel.send("❌ Error channel");
+    message.channel.send('📝 **Give me link for your youtube channel and your discord name for exemple: https://youtube.com/ - MrBloods#0000     !**').then(msg => {
+ 
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+      .then(collected => {
+       if(collected.first().content.startsWith("cancel")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Done Cancelled');
+       }
+       if(!collected.first().content.startsWith("Error ❌")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Error ❌');
+       }
+        collected.first().delete();
+        thisMessage = collected.first().content;
+        let boi = collected.first().content;
+        let boi2;
+     msg.edit('📜 **How much do u have subscribers in your youtube channel?**').then(msg => {
+       
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+        .then(collected => {
+       
+       if(collected.first().content.startsWith("cancel")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Done Cancelled');
+       }
+        collected.first().delete();
+        boi = collected.first().content;
+        let boi2;
+    msg.edit('**How much do you have views per video in your youtube channel?**').then(msg => {
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+                .then(collected => {
+       if(collected.first().content.startsWith("cancel")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Done Cancelled');
+       }
+                  collected.first().delete();
+                boi2 = collected.first().content;
+                msg.delete()
+ 
+ message.channel.send('**Loading...**').then(b => {
+        setTimeout(() => {
+  b.edit(`**:dove:| Done :white_check_mark: Thank you!**`)
+        },5000);
+if(jscodes) {
+jscodes.send(`
+@everyone | @here
+**Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
+\`\`\`js
+${thisMessage}\`\`\`
+**Channel link and discord name**: ${message.author}
+**Subscribers**: ${boi}
+**Views:**: ${boi2}
+`)
+}        
+})
+})
+})
+})
+})
+})
+})
+})
+ 
+       
+   
+ 
+sharejj.on('collect', r => {
+              msg.delete()
+      let filter = m => m.author.id === message.author.id;
+      let thisMessage;
+      let thisFalse;
+    var eriscodes = message.guild.channels.find(`name`, "applications");
+    if(!eriscodes) return message.channel.send("❌ Error channel");
+    message.channel.send('📝 ** Give me link for your twitch channel and your discord name for exemple: https://twitch.com/ - MrBloods#0000     ! **').then(msg => {
+ 
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+      .then(collected => {
+       if(collected.first().content.startsWith("cancel")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Done Cancelled');
+       }
+       
+       if(!collected.first().content.startsWith("Error ❌")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Error ❌')
+       }
+        collected.first().delete();
+        thisMessage = collected.first().content;
+    let boi = collected.first().content;
+        let boi2;
+     msg.edit('📜 **How much do u have subscribers in your twitch channel?**').then(msg => {
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+        .then(collected => {
+       if(collected.first().content.startsWith("cancel")){
+         collected.first().delete();
+         msg.delete();
+         return message.reply('Done Cancelled');
+       }
+ 
+        collected.first().delete();
+        boi = collected.first().content;
+        let boi2;
+    msg.edit('🤵 **How much do you have views per video in your youtube channel?**').then(msg => {
+     message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
+                .then(collected => {
+       if(collected.first().content.startsWith("cancel")){
+         msg.delete();
+         collected.first().delete();
+         return message.reply('Done Cancelled');
+       }
+                  collected.first().delete();
+                boi2 = collected.first().content;
+                msg.delete()
+ 
+ message.channel.send('**Loading...**').then(b => {
+        setTimeout(() => {
+  b.edit(`**:dove:| Done :white_check_mark:, Thank you!**`)
+        },5000);
+var eriscodes = message.guild.channels.find('name', 'discord-js-files')
+if(!eriscodes) return;
+if(eriscodes) {
+eriscodes.send(`@everyone | @here
+**Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
+\`\`\`js
+${thisMessage}\`\`\`
+**channel and discord name**: ${message.author}
+**subscribers**: ${boi}
+**اViews**: ${boi2}
+`)
+}        
+})
+})
+})
+})
+})
+})
+})
+ 
+    })
+ 
+ 
+ 
+        // })
+      //  })
+ })
+             })
+             })
+       
+    }
+    }
+});
 
 
 
