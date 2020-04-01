@@ -138,7 +138,7 @@ client.on('message', message => {
       let thisFalse;
     let jscodes = message.guild.channels.find(`name`, "applications");
     if(!jscodes) return message.channel.send("❌ Error channel");
-    message.channel.send('📝 **Give me link for your youtube channel for exemple: https://youtube.com/name**').then(msg => {
+    message.channel.send('📝 **Give me link for your youtube channel for exemple: https://youtube.com/channel/name**').then(msg => {
  
      message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
       .then(collected => {
