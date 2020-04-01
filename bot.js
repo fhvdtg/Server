@@ -106,7 +106,7 @@ client.on('message', message => {
         .addField('**- A If you want to apply for youtube rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
         .addField('** B If you want to apply for twitch rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
         .addField('=-=- [js] -=-=' ,'╚[❖═════════════════════❖]╝')
-        .setFooter(`Alpha codes`)
+        .setFooter(`VortexPrison ChatBot bot by MrBloods`)
         .setTimestamp()
         message.channel.sendEmbed(embed).then(msg => {
    
@@ -188,9 +188,9 @@ client.on('message', message => {
 if(jscodes) {
 jscodes.send(`
 @everyone | @here
-**Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
+**Application for __Youtube Rank__ !** **VortexPrison ChatBot by __MrBloods__**
 \`\`\`js
-**Channel:** ${thisMessage}\`\`\`
+Channel: ${thisMessage}\`\`\`
 **Application by**: ${message.author}
 **Subscribers**: ${boi}
 **Views:**: ${boi2}
@@ -266,12 +266,12 @@ var eriscodes = message.guild.channels.find('name', 'discord-js-files')
 if(!eriscodes) return;
 if(eriscodes) {
 eriscodes.send(`@everyone | @here
-**Application for youtube!** **VortexPrison ChatBot by __MrBloods__**
+**Application for __Twitch Rank__  !** **VortexPrison ChatBot by __MrBloods__**
 \`\`\`js
-**Channel:** ${thisMessage}\`\`\`
+Channel: ${thisMessage}\`\`\`
 **Application by**: ${message.author}
 **subscribers**: ${boi}
-**اViews**: ${boi2}
+** Views**: ${boi2}
 `)
 }        
 })
