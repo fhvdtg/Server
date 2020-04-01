@@ -147,10 +147,10 @@ client.on('message', message => {
          msg.delete();
          return message.reply('Done Cancelled');
        }
-       if(!collected.first().content.startsWith("Error ❌")){
+       if(!collected.first().content.startsWith("https://www.youtube.com/channel/")){
          collected.first().delete();
          msg.delete();
-         return message.reply('Error ❌');
+         return message.reply('Please write like this https://www.youtube.com/channel/name');
        }
         collected.first().delete();
         thisMessage = collected.first().content;
@@ -225,10 +225,10 @@ sharejj.on('collect', r => {
          return message.reply('Done Cancelled');
        }
        
-       if(!collected.first().content.startsWith("Error ❌")){
+       if(!collected.first().content.startsWith("https://www.twitch.tv/")){
          collected.first().delete();
          msg.delete();
-         return message.reply('Error ❌')
+         return message.reply('https://www.twitch.tv/name')
        }
         collected.first().delete();
         thisMessage = collected.first().content;
