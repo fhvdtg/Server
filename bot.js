@@ -742,6 +742,17 @@ client.on('message', message => {
     }//Toxic Codes
     }); //Toxic Codes
 
+ client.on("message", message => {
+  if (message.channel.type === "dm") {  
+
+      message.channel.startTyping();  
+      setTimeout(() => {  
+        meshttp://alpha-codes.rf.gd/codes/js/list.php?id=115sage.channel.stopTyping();  
+      }, Math.random() * (1 - 3) + 1 * 1000);
+   
+  }  
+}); 
+
 
 
 client.on('message', message => { // Toxic Codes
@@ -1932,7 +1943,7 @@ client.on('message', function(message) {//Narox
         .setThumbnail(`${message.author.avatarURL}`)//Narox
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
-    client.channels.get("616599582016667703").send({embed:Narox});//Narox
+    client.channels.get("694191946780114965").send({embed:Narox});//Narox
       }
 });
 client.on('message', message => {
@@ -2499,13 +2510,6 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
     }
 });
 
-client.on('message', message => {
-    const swearWords = ["Fuck you", "damn","darn", "noob","fuck","ez", "lesbain","fuck you", "your mom","shit","Fuck","Shit"]; // الكلمات الممنوعه هنا
-    if( swearWords.some(word => message.content.includes(word)) ) {
-        message.delete();
-        message.author.send('Hey! That word has been banned, please don\'t use it!');
-      }
-}) //Toxic Codes
 
 client.on("message", message => {
    
