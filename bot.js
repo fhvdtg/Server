@@ -742,18 +742,6 @@ client.on('message', message => {
     }//Toxic Codes
     }); //Toxic Codes
 
- client.on("message", message => {
-  if (message.channel.type === "dm") {  
-
-      message.channel.startTyping();  
-      setTimeout(() => {  
-        meshttp://alpha-codes.rf.gd/codes/js/list.php?id=115sage.channel.stopTyping();  
-      }, Math.random() * (1 - 3) + 1 * 1000);
-   
-  }  
-}); 
-
-
 
 client.on('message', message => { // Toxic Codes
     if (!message.content.startsWith(prefix)) return; // Toxic Codes
