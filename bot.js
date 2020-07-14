@@ -55,7 +55,7 @@ const developers = ["436918120184021012"]
 
  client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = ['!help','VortexPrison ChatBot','Bot by MrBloods','Ip: play.vortexprison.net','Welcome To VortexPrison Server!'];
+    var setGame = ['!help [games/general/x]','QuertixFaction Server','Bot by MrBloods','Ip: play.Quertix.net','Welcome To QuertixFaction Server!','Have Fun'];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -82,8 +82,8 @@ console.log("====================================")
 });
 
 client.on('message', message => {
-if(message.content.startsWith('-suggest'))  {  
-    message.channel.send("To suggest you need to write **!suggest**");
+if(message.content.startsWith('!suggestion'))  {  
+    message.channel.send("Please write this command! **!suggest**");
     }
   });
 
@@ -453,13 +453,13 @@ leave: 'On'
 
 client.on('message', message => {//new msg event
 if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'rainbow')) {//to create the rainbow role
-      let role = message.guild.roles.find('name', 'VortexPrison.')
+  if(message.content.startsWith(prefix + 'rbw11')) {//to create the rainbow role
+      let role = message.guild.roles.find('name', 'RainBow ---MrBloods.')
     if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
   //start of create role
   if(!role){
     rainbow =  message.guild.createRole({
-   name: "MrBloods.",//the role will create name
+   name: "RainBow ---MrBloods.",//the role will create name
    color: "#000000",//the default color
    permissions:[]//the permissions
  //end of create role
@@ -472,7 +472,7 @@ message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the s
 client.on('ready', () => {//new ready event
   setInterval(function(){
       client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'MrBloods.');//rainbow role name
+                  var role = g.roles.find('name', 'RainBow ---MrBloods.');//rainbow role name
                   if (role) {
                       role.edit({color : "RANDOM"});
                   };
@@ -482,16 +482,17 @@ client.on('ready', () => {//new ready event
 
 client.on("guildMemberAdd", member => {
     member.createDM().then(function (channel) {
-    return channel.send(`:rose: Welcome to VortexPrison server ! :rose: 
+    return channel.send(`:rose: Welcome to QuertixFaction server ! :rose: 
   :crown: Have fun!: ${member}:crown:  
-  You're number: ${member.guild.memberCount} `) 
+  You're number: ${member.guild.memberCount} 
+  **Bot By MrBloods.** `) 
   }).catch(console.error)
   })
 
 client.on('guildCreate', guild => {
     var embed = new Discord.RichEmbed()
     .setColor(0x5500ff)
-    .setDescription(`**Thank you for adding the bot to your server.**`)
+    .setDescription(`**Thank you for adding the bot to your server. **Bot By MrBloods**`)
         guild.owner.send(embed)
   });
 
@@ -602,115 +603,6 @@ client.on('message', async message => {
   }
 });
 
-client.on('message', async message => {
-    let messageArray = message.content.split(" ");
-   if(message.content.startsWith(prefix + "setLeave")) {
-             
-    let filter = m => m.author.id === message.author.id;
-    let thisMessage;
-    let thisFalse;
- 
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
-       msg.delete(4500);
-       message.delete(4500);
-    });
-   
-    message.channel.send(':pencil: **| Please type your message now... :pencil2: **').then(msg => {
- 
-        message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 90000,
-          errors: ['time']
-        })
-        .then(collected => {
-            collected.first().delete();
-            thisMessage = collected.first().content;
-            let boi;
-            msg.edit(':scroll: **| Type the name of the room now... :pencil2: **').then(msg => {
-     
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 90000,
-                  errors: ['time']
-                })
-                .then(collected => {
-                    collected.first().delete();
-                    boi = collected.first().content;
-                    msg.edit('✅ **| Prepared successfully...  **').then(msg => {
-       
-                      message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 90000,
-                        errors: ['time']
-                      })
-                      let embed = new Discord.RichEmbed()
-                      .setTitle('**Done The Leave Msg Code Has Been Setup**')
-                      .addField('Message:', `${thisMessage}`)
-                      .addField('Channel:', `${boi}`)
-                      .setThumbnail(message.author.avatarURL)
-                      .setFooter(`${client.user.username}`)
-                     message.channel.sendEmbed(embed)
-    welcome[message.guild.id] = {
-leavechannel: boi,
-leavemsg: thisMessage,
-onoff: 'On',
-leave: 'On'
-    }
-    fs.writeFile("./welcomer.json", JSON.stringify(welcome), (err) => {
-    if (err) console.error(err)
-  })
-   }
-            )
-        })
-    })
-})
-    })
-}})
-
-client.on('message', message => {//new msg event
-if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'rainbow')) {//to create the rainbow role
-      let role = message.guild.roles.find('name', 'VortexPrison.')
-    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
-  //start of create role
-  if(!role){
-    rainbow =  message.guild.createRole({
-   name: "MrBloods.",//the role will create name
-   color: "#000000",//the default color
-   permissions:[]//the permissions
- //end of create role
-})
- 
-}
-message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the step completed
-}})
- 
-client.on('ready', () => {//new ready event
-  setInterval(function(){
-      client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'MrBloods.');//rainbow role name
-                  if (role) {
-                      role.edit({color : "RANDOM"});
-                  };
-      });
-  }, 15000);//the rainbow time
-})
-
-client.on("guildMemberAdd", member => {
-    member.createDM().then(function (channel) {
-    return channel.send(`:rose: Welcome to VortexPrison server ! :rose: 
-  :crown: Have fun!: ${member}:crown:  
-  You're number: ${member.guild.memberCount} `) 
-  }).catch(console.error)
-  })
-
-client.on('guildCreate', guild => {
-    var embed = new Discord.RichEmbed()
-    .setColor(0x5500ff)
-    .setDescription(`**Thank you for adding the bot to your server.**`)
-        guild.owner.send(embed)
-  });
-
 client.on('message', message => {
     if(message.content == '!allservers') {
              if(!message.author.id === '436918120184021012') return;
@@ -814,17 +706,6 @@ client.on('message', message => {
  }
  
  });
-
-client.on('message', function(message) {
-    if(message.content.startsWith(prefix + 'vip')) {
-        let guild = message.mentions.members.first();
-                          let ZmA = new Discord.RichEmbed()
-                  .setColor('3fcf24')
-                  .setDescription('**__✅ I added the rank__**')
-        message.member.addRole(message.guild.roles.find('name', 'VIP'));
-                    message.channel.send({embed:ZmA});
-    }
-}); //Toxic Codes
 
 client.on('message', message => {
            if (!message.channel.guild) return;
@@ -1289,7 +1170,7 @@ if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
 
 client.on('guildMemberAdd', member => {
 
-    const channel = member.guild.channels.find('name', '「👋」welcome');
+    const channel = member.guild.channels.find('name', '「👋」welco-me');
   
     const millis = new Date().getTime() - member.user.createdAt.getTime();
     const now = new Date();
@@ -1398,11 +1279,11 @@ client.on('guildMemberAdd', member => {
   });
 
 client.on("message", message => {
-    if (message.content === "!help") {
+    if (message.content === "!help general") {
      const embed = new Discord.RichEmbed() 
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
-         .setDescription(`**Help | DivineWoods**
+         .setDescription(`**Help | QuertixFaction | Bot By MrBloods**
 
         **__General orders__**
 **
@@ -1423,6 +1304,25 @@ client.on("message", message => {
 『!rename/ Like nickname』
 『!user/ Show you your infos』
 **
+『 The bot can mute anyone who share server link in the chat - The bot will remove any bad words (Removed) 』
+『 The bot welcome who join the server if you create a room called welcome (soon) 』
+『 The bot have a log 』
+『 Thanks for using the bot 』
+
+       Bot By MrBloods** `)
+     
+            
+   message.author.sendEmbed(embed)
+   
+   }
+   });
+
+client.on("message", message => {
+    if (message.content === "!help games") {
+     const embed = new Discord.RichEmbed() 
+         .setColor("#00FF00")
+         .setThumbnail(message.author.avatarURL)
+         .setDescription(`**Help | QuertixFaction | Bot By MrBloods**
 
         **__Games orders__**
  **       
@@ -1435,6 +1335,26 @@ client.on("message", message => {
 『!emoji <emoji>/ its funny and helpful 』
 『!skin <ign>/ Show your minecraft skin 』
 **
+『 The bot can mute anyone who share server link in the chat - The bot will remove any bad words (Removed) 』
+『 The bot welcome who join the server if you create a room called welcome (soon) 』
+『 The bot have a log 』
+『 Thanks for using the bot 』
+
+       Bot By MrBloods** `)
+     
+            
+   message.author.sendEmbed(embed)
+   
+   }
+   });
+
+client.on("message", message => {
+    if (message.content === "!help musicc") {
+     const embed = new Discord.RichEmbed() 
+         .setColor("#00FF00")
+         .setThumbnail(message.author.avatarURL)
+         .setDescription(`**Help | QuertixFaction | Bot By MrBloods**
+
 
         **__Music orders__**
 **
@@ -1447,7 +1367,25 @@ client.on("message", message => {
 『${prefix}np / Soon』
 『${prefix}queue / Soon』
 **
+『 The bot can mute anyone who share server link in the chat - The bot will remove any bad words (Removed) 』
+『 The bot welcome who join the server if you create a room called welcome (soon) 』
+『 The bot have a log 』
+『 Thanks for using the bot 』
 
+       Bot By MrBloods** `)
+     
+            
+   message.author.sendEmbed(embed)
+   
+   }
+   });
+     
+client.on("message", message => {
+    if (message.content === "!help admin-") {
+     const embed = new Discord.RichEmbed() 
+         .setColor("#00FF00")
+         .setThumbnail(message.author.avatarURL)
+         .setDescription(`**Help | QuertixFaction | Bot By MrBloods**
         **__Administrative Orders__**
 **
 『!bc / broadcast』
@@ -1462,9 +1400,9 @@ client.on("message", message => {
 『!move/ You will move the member from foice channel』
 『!voice  / Show you the members who are in the voice rooms』
 
-『 The bot can mute anyone share any link in the chat - The bot will remove any bad words 』
-『 The bot welcome who join the server if you create a room called welcome 』
-『 The bot have a log !! 』
+『 The bot can mute anyone who share server link in the chat - The bot will remove any bad words (Removed) 』
+『 The bot welcome who join the server if you create a room called welcome (soon) 』
+『 The bot have a log 』
 『 Thanks for using the bot 』
 
        Bot By MrBloods** `)
@@ -1976,7 +1914,7 @@ client.on('messageDelete', message => {
     if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;
  
-    var logChannel = message.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = message.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     let messageDelete = new Discord.RichEmbed()
@@ -1996,7 +1934,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     if(!oldMessage.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!oldMessage.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return;
  
-    var logChannel = oldMessage.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = oldMessage.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     if(oldMessage.content.startsWith('https://')) return;
@@ -2019,7 +1957,7 @@ client.on('roleCreate', role => {
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!role.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = role.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = role.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     role.guild.fetchAuditLogs().then(logs => {
@@ -2042,7 +1980,7 @@ client.on('roleDelete', role => {
     if(!role.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!role.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = role.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = role.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     role.guild.fetchAuditLogs().then(logs => {
@@ -2068,7 +2006,7 @@ client.on('channelCreate', channel => {
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!channel.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = channel.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = channel.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     if(channel.type === 'text') {
@@ -2101,7 +2039,7 @@ client.on('channelDelete', channel => {
     if(!channel.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!channel.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = channel.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = channel.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     if(channel.type === 'text') {
@@ -2132,7 +2070,7 @@ client.on('channelDelete', channel => {
 client.on('channelUpdate', (oldChannel, newChannel) => {
     if(!oldChannel.guild) return;
  
-    var logChannel = oldChannel.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = oldChannel.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     if(oldChannel.type === 'text') {
@@ -2170,7 +2108,7 @@ client.on('guildBanAdd', (guild, user) => {
     if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = guild.channels.find(c => c.name === 'log');
+    var logChannel = guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     guild.fetchAuditLogs().then(logs => {
@@ -2194,7 +2132,7 @@ client.on('guildBanRemove', (guild, user) => {
     if(!guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = guild.channels.find(c => c.name === 'log');
+    var logChannel = guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     guild.fetchAuditLogs().then(logs => {
@@ -2292,7 +2230,7 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
     })
 });
 client.on('guildMemberUpdate', (oldMember, newMember) => {
-    var logChannel = oldMember.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = oldMember.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     oldMember.guild.fetchAuditLogs().then(logs => {
@@ -2362,7 +2300,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     }
 });
 client.on('guildMemberAdd', member => {
-  var logChannel = member.guild.channels.find(c => c.name === '「📋」changelog');
+  var logChannel = member.guild.channels.find(c => c.name === 'botlog');
   if(!logChannel) return;
  
   let newMember = new Discord.RichEmbed()
@@ -2382,7 +2320,7 @@ function Days(date) {
     return days + (days == 1 ? " day" : " days") + " ago";
 }
 client.on('guildMemberRemove', member => {
-  var logChannel = member.guild.channels.find(c => c.name === '「📋」changelog');
+  var logChannel = member.guild.channels.find(c => c.name === 'botlog');
   if(!logChannel) return;
  
   let leaveMember = new Discord.RichEmbed()
@@ -2403,7 +2341,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
     if(!voiceOld.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
     if(!voiceOld.guild.member(client.user).hasPermission('VIEW_AUDIT_LOG')) return;
  
-    var logChannel = voiceOld.guild.channels.find(c => c.name === '「📋」changelog');
+    var logChannel = voiceOld.guild.channels.find(c => c.name === 'botlog');
     if(!logChannel) return;
  
     voiceOld.guild.fetchAuditLogs().then(logs => {
@@ -2524,7 +2462,7 @@ client.on("message", message => {
 });
 
 client.on('guildMemberAdd', member => {
-var channel = member.guild.channels.find('name', '「👋」welcome');
+var channel = member.guild.channels.find('name', '「👋」welc-ome');
     if(!channel) return;
 channel.send('**Welcome** ' + `${member}` + ' **To** ' + `__${member.guild.name}__` + ' **Server** 💕')          
  
@@ -2540,7 +2478,7 @@ message.guild.unban(ns);
 }).then(() => {
 let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)          
-  .addField("Done✅|")  
+  .addField("Done✅| **Bot By MrBloods**")  
   .setFooter(`Requested By | ${message.author.tag}`)
   message.channel.send(embed);
 })
@@ -2578,7 +2516,7 @@ message.channel.send(E2Mdax);
 });
 
 client.on('message', message=>{
-    if (message.content ===  "99383197"){
+    if (message.content ===  "112"){
     message.guild.leave();
             }
 }); //Toxic Codes
@@ -2614,7 +2552,7 @@ client.on('message', function(message) {
     if(message.content === 'cc') {
     if(message.member.hasPermission('MANAGE_ROLES')) {
     setInterval(function(){})
-    message.channel.send('Wait we are making 50 colors| ▶️')
+    message.channel.send('Wait we are making 49 colors| ▶️')
     }else{
     message.channel.send('You dont have permission|❌🚫')
     }
@@ -2732,7 +2670,7 @@ client.on('message', message => {
               const Embed11 = new Discord.RichEmbed()
         .setColor("RANDOM")
         
-    .setDescription("VortexPrison Server - Bot by MrBloods")
+    .setDescription("QuertixFaction Server - Bot by MrBloods")
       message.author.sendEmbed(Embed11)
     }
 });
@@ -2781,7 +2719,22 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === 'IP')
-  msg.reply('IP: play.vortexprison.net ')
+  msg.reply('IP: play.Quertix.net ')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'iP')
+  msg.reply('IP: play.Quertix.net ')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'Ip')
+  msg.reply('IP: play.Quertix.net ')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'ip')
+  msg.reply('IP: play.Quertix.net ')
 });
 
 client.on('message', msg => {
