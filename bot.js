@@ -296,6 +296,13 @@ Channel: ${thisMessage}\`\`\`
     }
 });
 
+client.on('guildMemberAdd', member => {
+  console.log('User' + member.user.tag + 'has joined the server!');
+
+  var role = member.guild.roles.find('name', 'Prisoner');
+  member.addRole(role);
+});
+
 
 
 client.on('message', message => {let prefix = "!";
@@ -320,7 +327,7 @@ const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
 
  client.on("guildMemberAdd", member => {
-  let welcomer = member.guild.channels.find("name","welcomenesttimenewwelcomer");
+  let welcomer = member.guild.channels.find("name","welcome");
         if(!welcomer) return;
         if(welcomer) {
            moment.locale('ar-ly');
@@ -1547,7 +1554,7 @@ client.on('message', async msg =>{
     };
 });
 
-let inv_room = "688718826971595008" // room id
+let inv_room = "771710273455259649" // room id
 client.on('guildMemberAdd', async member => { // membed add event
     member.guild.fetchInvites().then(async guildInvites => { // fetch invites ?
             const inv = invites[member.guild.id]; // get invite :)
@@ -2462,7 +2469,7 @@ client.on("message", message => {
 });
 
 client.on('guildMemberAdd', member => {
-var channel = member.guild.channels.find('name', '「👋」welc-ome');
+var channel = member.guild.channels.find('name', '「👋」welco-me');
     if(!channel) return;
 channel.send('**Welcome** ' + `${member}` + ' **To** ' + `__${member.guild.name}__` + ' **Server** 💕')          
  
@@ -2510,7 +2517,7 @@ var E2Mdax = new Discord.RichEmbed()
 .addField('📗|online',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
 .addField('📓| offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
 .setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
-.addField('**=======VortexPrison Server=======**',true)
+.addField('**=======QuertixNetwork Server=======**',true)
 .setColor('RANDOM')
 message.channel.send(E2Mdax);
 });
@@ -2820,7 +2827,7 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + 'sug')) {
       if (message.author.bot) return
       if (!message.guild) return message.reply('**:x: This Commands Just In Server**')
-      let Room = message.guild.channels.find(`name`, "「📊」suggestions")
+      let Room = message.guild.channels.find(`name`, "suggestions")
       if (!Room) return message.channel.send(`**Error** :octagonal_sign:\n**I Can't find the __suggestions__ Channel**`)
       if(!Room.permissionsFor(client.user).has(['SEND_MESSAGES','READ_MESSAGES','EMBED_LINKS'])) return message.channel.send(`**Error** :octagonal_sign:
 I Don\'t have Permissions on tha suggestions channel`)
