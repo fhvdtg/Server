@@ -93,7 +93,7 @@ client.on('message', message => {
        
         const httpkey = "http";
        
-        let rank = message.guild.member(message.author).roles.find('name', '〘 Verified 〙');
+        let rank = message.guild.member(message.author).roles.find('name', 'Prisoner');
         if (!rank) return message.channel.send('');
        
         var romcodes = message.channel.id == '771714706285002803';
