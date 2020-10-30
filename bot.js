@@ -454,7 +454,7 @@ leave: 'On'
 client.on('message', message => {//new msg event
 if(!message.channel.guild) return;
   if(message.content.startsWith(prefix + 'rbw11')) {//to create the rainbow role
-      let role = message.guild.roles.find('name', 'RainBow ---MrBloods.')
+      let role = message.guild.roles.find('name', 'RainBow,')
     if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
   //start of create role
   if(!role){
