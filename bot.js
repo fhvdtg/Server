@@ -96,9 +96,9 @@ client.on('message', message => {
         let rank = message.guild.member(message.author).roles.find('name', '〘 Verified 〙');
         if (!rank) return message.channel.send('');
        
-        var romcodes = message.channel.id == '771708789702918174';
+        var romcodes = message.channel.id == '771714706285002803';
         if(!romcodes) {
-            message.channel.send('**:x: Please use the command here #「👾」bot-commands !**')
+            message.channel.send('**:x: Please use the command here #apply-yt-tw**')
         } else {
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -136,7 +136,7 @@ client.on('message', message => {
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
       let thisFalse;
-    let jscodes = message.guild.channels.find(`name`, "applications");
+    let jscodes = message.guild.channels.find(`name`, "apply-yt-tw");
     if(!jscodes) return message.channel.send("❌ Error channel");
     message.channel.send('📝 **Sned me your channel link for exemple: https://youtube.com/channel/QuertixNetwork**').then(msg => {
  
@@ -213,7 +213,7 @@ sharejj.on('collect', r => {
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
       let thisFalse;
-    var eriscodes = message.guild.channels.find(`name`, "applications");
+    var eriscodes = message.guild.channels.find(`name`, "apply-yt-tw");
     if(!eriscodes) return message.channel.send("❌ Error channel");
     message.channel.send('📝 **Send me your twitch channel link for exemple: https://twitch.com/QuertixNetwork**').then(msg => {
  
