@@ -96,7 +96,7 @@ client.on('message', message => {
         let rank = message.guild.member(message.author).roles.find('name', '〘 Verified 〙');
         if (!rank) return message.channel.send('');
        
-        var romcodes = message.channel.id == '688718834387255405';
+        var romcodes = message.channel.id == '771708789702918174';
         if(!romcodes) {
             message.channel.send('**:x: Please use the command here #「👾」bot-commands !**')
         } else {
