@@ -55,7 +55,7 @@ const developers = ["436918120184021012"]
 
  client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = ['!help [games/general/x]','QuertixFaction Server','Bot by MrBloods','Ip: play.Quertix.net','Welcome To QuertixFaction Server!','Have Fun'];
+    var setGame = ['!help','QuertixNetWork','Bot by MrBloods','Ip: Quertix.net','Welcome To QuertixNetwork Server!','JOIN NOW Quertix.net'];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -106,7 +106,7 @@ client.on('message', message => {
         .addField('**- A If you want to apply for youtube rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
         .addField('** B If you want to apply for twitch rank**' ,'**=-=-=-=-=-=-=-=-=-=-=**')
         .addField('=-=- [js] -=-=' ,'╚[❖═════════════════════❖]╝')
-        .setFooter(`VortexPrison ChatBot bot by MrBloods`)
+        .setFooter(`Copyright © QuertixNetwork`)
         .setTimestamp()
         message.channel.sendEmbed(embed).then(msg => {
    
@@ -138,7 +138,7 @@ client.on('message', message => {
       let thisFalse;
     let jscodes = message.guild.channels.find(`name`, "applications");
     if(!jscodes) return message.channel.send("❌ Error channel");
-    message.channel.send('📝 **Give me link for your youtube channel for exemple: https://youtube.com/channel/name**').then(msg => {
+    message.channel.send('📝 **Sned me your channel link for exemple: https://youtube.com/channel/QuertixNetwork**').then(msg => {
  
      message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
       .then(collected => {
@@ -150,7 +150,7 @@ client.on('message', message => {
        if(!collected.first().content.startsWith("https://www.youtube.com/channel/")){
          collected.first().delete();
          msg.delete();
-         return message.reply('Please write like this https://www.youtube.com/channel/name');
+         return message.reply('Please write like this next time https://www.youtube.com/channel/QuertixNetwork    Now apply again!');
        }
         collected.first().delete();
         thisMessage = collected.first().content;
@@ -188,7 +188,7 @@ client.on('message', message => {
 if(jscodes) {
 jscodes.send(`
 @everyone | @here
-**Application for __Youtube Rank__ !** **VortexPrison ChatBot by __MrBloods__**
+**Application for __Youtube Rank__ !** ** Copyright © QuertixNetwork**
 \`\`\`js
 Channel: ${thisMessage}\`\`\`
 **Application by**: ${message.author}
@@ -215,7 +215,7 @@ sharejj.on('collect', r => {
       let thisFalse;
     var eriscodes = message.guild.channels.find(`name`, "applications");
     if(!eriscodes) return message.channel.send("❌ Error channel");
-    message.channel.send('📝 ** Give me link for your twitch channel for exemple: https://twitch.com/name**').then(msg => {
+    message.channel.send('📝 **Send me your twitch channel link for exemple: https://twitch.com/QuertixNetwork**').then(msg => {
  
      message.channel.awaitMessages(filter, { max: 1, time: 90000, errors: ['time'] })
       .then(collected => {
@@ -228,7 +228,7 @@ sharejj.on('collect', r => {
        if(!collected.first().content.startsWith("https://www.twitch.tv/")){
          collected.first().delete();
          msg.delete();
-         return message.reply('https://www.twitch.tv/name')
+         return message.reply('Please write like this next time https://twitch.com/QuertixNetwork    Now apply again!');
        }
         collected.first().delete();
         thisMessage = collected.first().content;
@@ -266,7 +266,7 @@ var eriscodes = message.guild.channels.find('name', 'discord-js-files')
 if(!eriscodes) return;
 if(eriscodes) {
 eriscodes.send(`@everyone | @here
-**Application for __Twitch Rank__  !** **VortexPrison ChatBot by __MrBloods__**
+**Application for __Twitch Rank__  !** ** Copyright © QuertixNetwork**
 \`\`\`js
 Channel: ${thisMessage}\`\`\`
 **Application by**: ${message.author}
@@ -459,7 +459,7 @@ if(!message.channel.guild) return;
   //start of create role
   if(!role){
     rainbow =  message.guild.createRole({
-   name: "RainBow ---MrBloods.",//the role will create name
+   name: "RainBow,",//the role will create name
    color: "#000000",//the default color
    permissions:[]//the permissions
  //end of create role
@@ -472,7 +472,7 @@ message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the s
 client.on('ready', () => {//new ready event
   setInterval(function(){
       client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'RainBow ---MrBloods.');//rainbow role name
+                  var role = g.roles.find('name', 'RainBow,');//rainbow role name
                   if (role) {
                       role.edit({color : "RANDOM"});
                   };
@@ -482,10 +482,10 @@ client.on('ready', () => {//new ready event
 
 client.on("guildMemberAdd", member => {
     member.createDM().then(function (channel) {
-    return channel.send(`:rose: Welcome to QuertixFaction server ! :rose: 
+    return channel.send(`:rose: Welcome to QuertixNetwork ! :rose: 
   :crown: Have fun!: ${member}:crown:  
   You're number: ${member.guild.memberCount} 
-  **Bot By MrBloods.** `) 
+  Copyright © QuertixNetwork`) 
   }).catch(console.error)
   })
 
@@ -1003,7 +1003,7 @@ message.channel.send("`Error`:" + Julian)
   }
   });
 
-client.on("message", msg=>{
+/**client.on("message", msg=>{
 let id = "436918120184021012"; // ايديك
 let role = "VIP"; // اسم رتبة الفيب
 let Price = 10000; // السعر
@@ -1130,7 +1130,7 @@ function save(){
     if (err) console.log(err)
   });
 	
-}
+}**/
 
 client.on('message', message => {
     if (message.content.toLowerCase().startsWith(prefix+"tops")) {
@@ -1183,7 +1183,7 @@ client.on('guildMemberAdd', member => {
     const embed = new Discord.RichEmbed()
     
     .setColor("RANDOM")
-    .setDescription(`**Welcome to VortexPrison Server 🌹.**`)
+    .setDescription(`**Welcome to QuertixNetwork Server 🌹.**`)
     .setAuthor(member.user.tag, member.user.avatarURL);
     channel.sendEmbed(embed);
 
@@ -1309,7 +1309,7 @@ client.on("message", message => {
 『 The bot have a log 』
 『 Thanks for using the bot 』
 
-       Bot By MrBloods** `)
+       Copyright © QuertixNetwork** `)
      
             
    message.author.sendEmbed(embed)
@@ -1340,7 +1340,7 @@ client.on("message", message => {
 『 The bot have a log 』
 『 Thanks for using the bot 』
 
-       Bot By MrBloods** `)
+       Copyright © QuertixNetwork** `)
      
             
    message.author.sendEmbed(embed)
@@ -1372,7 +1372,7 @@ client.on("message", message => {
 『 The bot have a log 』
 『 Thanks for using the bot 』
 
-       Bot By MrBloods** `)
+       Copyright © QuertixNetwork** `)
      
             
    message.author.sendEmbed(embed)
@@ -1405,7 +1405,7 @@ client.on("message", message => {
 『 The bot have a log 』
 『 Thanks for using the bot 』
 
-       Bot By MrBloods** `)
+       Copyright © QuertixNetwork** `)
      
             
    message.author.sendEmbed(embed)
@@ -1735,7 +1735,7 @@ var flip = ["**__HEADS__**",
 .setDescription(flip[Math.floor(Math.random() * flip.length)])
 .setThumbnail("https://cdn.onlinewebfonts.com/svg/img_441809.png")
 .setColor(0xd3d0c4)
-   .setFooter(`Bot by MrBloods`)
+   .setFooter(`Copyright © QuertixNetwork`)
 message.channel.sendEmbed(cat);
 
     }
@@ -2478,7 +2478,7 @@ message.guild.unban(ns);
 }).then(() => {
 let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)          
-  .addField("Done✅| **Bot By MrBloods**")  
+  .addField("Done✅| **Copyright © QuertixNetwork**")  
   .setFooter(`Requested By | ${message.author.tag}`)
   message.channel.send(embed);
 })
@@ -2670,7 +2670,7 @@ client.on('message', message => {
               const Embed11 = new Discord.RichEmbed()
         .setColor("RANDOM")
         
-    .setDescription("QuertixFaction Server - Bot by MrBloods")
+    .setDescription("Copyright © QuertixNetwork")
       message.author.sendEmbed(Embed11)
     }
 });
@@ -2719,22 +2719,22 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === 'IP')
-  msg.reply('IP: play.Quertix.net ')
+  msg.reply('IP: Quertix.net ')
 });
 
 client.on('message', msg => {
   if(msg.content === 'iP')
-  msg.reply('IP: play.Quertix.net ')
+  msg.reply('IP: Quertix.net ')
 });
 
 client.on('message', msg => {
   if(msg.content === 'Ip')
-  msg.reply('IP: play.Quertix.net ')
+  msg.reply('IP: Quertix.net ')
 });
 
 client.on('message', msg => {
   if(msg.content === 'ip')
-  msg.reply('IP: play.Quertix.net ')
+  msg.reply('IP: Quertix.net ')
 });
 
 client.on('message', msg => {
